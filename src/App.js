@@ -1,28 +1,18 @@
 import './App.css';
-import { ChakraProvider, 
-  theme, Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbSeparator } from '@chakra-ui/react'
+import { ChakraProvider,Button, ButtonGroup } from '@chakra-ui/react'
 import Tittle from './Components/Tittle/tittle.js'
+import Menu from './Components/Menu/menu.js'
 
 function App() {
   return (
-    <ChakraProvider theme={theme}>
+    <ChakraProvider >
     <div className="App">
-      <Tittle name = "Adopciones"/>
-      <Breadcrumb separator='-'>
-        <BreadcrumbItem>
-          <BreadcrumbLink href='#'>Home</BreadcrumbLink>
-        </BreadcrumbItem>
-
-        <BreadcrumbItem>
-          <BreadcrumbLink href='pets'>Mascotas</BreadcrumbLink>
-        </BreadcrumbItem>
-
-        <BreadcrumbItem isCurrentPage>
-          <BreadcrumbLink href='myuser'>Mi Sitio</BreadcrumbLink>
-        </BreadcrumbItem>
-</Breadcrumb>
+      <Tittle name = "Adopciones" />
+      <Menu ></Menu>
+      <Button colorScheme='blue'>Button</Button>
     </div>
     </ChakraProvider>
+    
   );
 }
 
