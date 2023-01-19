@@ -1,0 +1,14 @@
+.parrilla{
+    background-color:white;
+    display: flex;
+}
+.ficha{
+    border-color: #231f20;
+    width: 20rem;
+    margin: 2rem;
+    
+}
+.botonficha{
+    display: flex;
+    justify-content: flex-end;
+}
