@@ -5,7 +5,7 @@ import {styles} from "./menu.css"
 const Menu = () => {
     return <div> 
         
-        <Breadcrumb separator='-' className="menu1" display="flex" justifyContent="space-between" fontFamily='Jaldi' paddingLeft={5} paddingBottom={2}>
+        <Breadcrumb separator='-' className="menu1" display="flex" justifyContent="space-around" fontFamily='Jaldi' paddingLeft={0} paddingBottom={2}>
             <BreadcrumbItem isCurrentPage className="menu2">
                 <BreadcrumbLink href='#' className="menu3">Inicio</BreadcrumbLink>
             </BreadcrumbItem>
