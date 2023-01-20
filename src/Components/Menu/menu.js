@@ -17,9 +17,11 @@ const Menu = () => {
             <BreadcrumbItem className="menu2">
                 <BreadcrumbLink href='myuser' className="menu3">Mi Perfil</BreadcrumbLink>
             </BreadcrumbItem>
+
             <ButtonGroup spacing='2' >
                 <Button className="botonficha" variant='solid' colorScheme='yellow' color='white' bg='#f23084'> Log-in </Button>
             </ButtonGroup>
+
         </Breadcrumb>
         </div>
 }
