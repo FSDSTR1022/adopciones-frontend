@@ -1,6 +1,6 @@
 .menu1 ol {
     display: flex;
-    justify-content: space-around; 
+    justify-content: space-between; 
     background-color: #4f42e1;
     color: #bcb9db;
     width:100vw;
