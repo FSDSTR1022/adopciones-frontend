@@ -1,12 +1,18 @@
 .menu1{
+    display: flex;
+    justify-content: space-between; 
     background-color: #4f42e1;
     color: #bcb9db;
+
 }
 .menu3{
     background-color: #4f42e1;
 }
 .menu3{
-    font-family: 'Jaldi';
     font-weight: bold;
-    font-size: 1.5rem;
+    font-size: 1rem;
+}
+.botonficha{
+    font-weight: bold;
+    font-size: 1rem;
 }

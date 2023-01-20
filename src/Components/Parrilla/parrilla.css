@@ -1,6 +1,7 @@
 .parrilla{
     background-color:white;
     display: flex;
+    justify-content: space-around;
 }
 .ficha{
     border-color: #231f20;
@@ -11,4 +12,17 @@
 .botonficha{
     display: flex;
     justify-content: flex-end;
+    background-color: #f23084;
+    font-family: 'Jaldi';
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+@media screen and (max-width: 850px){
+    .parrilla{
+        background-color:white;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+    }
 }
