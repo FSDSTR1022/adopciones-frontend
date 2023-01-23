@@ -6,7 +6,7 @@ const Menu = () => {
     return <div> 
         
         <Breadcrumb separator='-' className="menu1" fontFamily='Jaldi' paddingLeft={0} paddingBottom={2} >
-            <div className="AAA">
+            <div >
             <BreadcrumbItem isCurrentPage className="menu2" padding={4} >
                 <BreadcrumbLink href='caca' className="menu3">Inicio</BreadcrumbLink>
             </BreadcrumbItem>
@@ -20,7 +20,7 @@ const Menu = () => {
             </BreadcrumbItem>
             </div>
 
-            <div className="BBB">            
+            <div >            
             <ButtonGroup spacing='2' paddingRight={4}>
                 <Button className="botonficha" variant='solid' colorScheme='yellow' color='white' bg='#f23084'  > Log-in </Button>
             </ButtonGroup>
