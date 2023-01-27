@@ -1,9 +1,12 @@
 import React from "react";
-import {styles} from "./tittle.css"
+import "./tittle.css"
+import logo from '../../../src/logoadopciones.png'
 
 const Tittle = () => {
-    return  <div className="titulo">
-                <h1>Azul Adopciones</h1>
+    return  <div className="cabecera">
+                <div></div>
+                <div className="titulo"><h1>Azul Adopciones</h1></div>
+                <img src={logo} className='logo' alt="logo" />
             </div>
 }
 

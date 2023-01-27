@@ -2,6 +2,7 @@
     background-color:white;
     display: flex;
     justify-content: space-around;
+    margin-top: 5rem;
 }
 .ficha{
     border-color: #231f20;

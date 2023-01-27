@@ -1,10 +1,23 @@
-h1{
-    font-family: 'Jaldi';
-    font-weight: bold;
-    color: #bcb9db;
+.cabecera{
+    /* position: fixed;
+    top: 0;
+    width: 100%; */
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+    color: #4f42e1;
 }
 .titulo{
-    background-color: #4f42e1;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
     font-weight: bold;
     font-size: 2rem;
+    font-family: 'Jaldi';
+    font-weight: bold;
+    color: #4f42e1;
+}
+.logo{
+    width: 5rem;
+    margin-right: 2rem;
 }

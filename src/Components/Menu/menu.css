@@ -1,3 +1,13 @@
+.menucontainer{
+    padding-right: 3rem;
+    padding-bottom: 0.5rem;
+}
+/* .menu1{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    margin-top: 3.1rem;
+} */
 .menu1 ol {
     display: flex;
     justify-content: space-between; 
@@ -5,16 +15,35 @@
     color: #bcb9db;
     width:100vw;
     margin:0;
-    padding:0;
+    padding-left:1rem;
 }
-.menu3{
+.menu2{
+    padding-right: 2rem;
+}.menu3{
     background-color: #4f42e1;
+    color: #ffc61b;
+    text-decoration-line: none;
+}
+.menu3:hover{    
+    color: #f23084;
 }
 .menu3{
     font-weight: bold;
     font-size: 1rem;
 }
-.botonficha{
+.botonmenu{    
+    text-align: center;
     font-weight: bold;
     font-size: 1rem;
+    margin: none;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    height: 2rem;
+    width: 5rem;
+    background-color: #f23084;
+}
+.botonmenu:hover{    
+    background-color: #ffc61b;
+    color: #231f20;
 }

@@ -1,20 +1,23 @@
 import './App.css';
 import { ChakraProvider } from '@chakra-ui/react'
-import Tittle from './Components/Tittle/tittle.js'
-import Menu from './Components/Menu/menu.js'
-import Parrilla from './Components/Parrilla/parrilla.js'
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import HomePage from './Navigation/HomePage/homepage';
+import PetsPage from './Navigation/PetsPage/petspage';
+import MyUserPage from './Navigation/MyUserPage/myuser';
+import LoginPage from './Navigation/LoginPage/loginpage';
 
 function App() {
   return (
-    <ChakraProvider >
-    <div className="App">
-      <Tittle name = "Adopciones" />
-      <Menu ></Menu>
-      <Parrilla ></Parrilla>
-    </div>
+    <ChakraProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<HomePage/>}></Route>
+          <Route path='/pets' element={<PetsPage/>}></Route>
+          <Route path='/myuser' element={<MyUserPage/>}></Route>
+          <Route path='/login' element={<LoginPage/>}></Route>
+        </Routes>
+      </BrowserRouter>
     </ChakraProvider>
-    
-  );
-}
+);}
 
 export default App;
