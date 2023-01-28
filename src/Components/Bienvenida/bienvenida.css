@@ -1,0 +1,22 @@
+.wellcome{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #4f42e1;
+    margin-top: 4rem;
+}
+.foto{
+    width: 80rem;
+}
+.disclosure{
+    background-color: #4f42e1;
+    color: #bcb9db;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.submenu{
+    margin: 0px;
+    padding: none;
+}
