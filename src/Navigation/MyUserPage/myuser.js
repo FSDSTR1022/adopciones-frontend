@@ -8,8 +8,7 @@ import Footer from "../../Components/Footer/footer.js";
 const MyUserPage = () => {
     const {slug} = useParams();
 
-    return(
-        <>
+    return(<>
             <Tittle></Tittle>
             <Menu ></Menu>
             <Perfil></Perfil>

@@ -46,6 +46,6 @@ const Perfil = () => {
                     </div>
                 </div>
             </div>
-}
+            }
 
 export default Perfil
