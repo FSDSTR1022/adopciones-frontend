@@ -2,21 +2,21 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import Tittle from '../../Components/Tittle/tittle.js'
 import Menu from '../../Components/Menu/menu'
-import LoginForm from '../../Components/LoginForm/loginform'
+import Success from '../../Components/Success/success'
 import Footer from "../../Components/Footer/footer.js";
 
 
-const LoginPage = () => {
+const SuccessPage = () => {
     const {slug} = useParams();
 
     return(
         <>
             <Tittle></Tittle>
             <Menu ></Menu>
-            <LoginForm></LoginForm>
+            <Success></Success>
             <Footer></Footer>
         </>
     )
 }
 
-export default LoginPage
+export default SuccessPage

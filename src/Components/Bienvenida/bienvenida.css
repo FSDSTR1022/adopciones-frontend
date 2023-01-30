@@ -4,19 +4,28 @@
     align-items: center;
     justify-content: center;
     background-color: #4f42e1;
-    margin-top: 4rem;
+    margin-top: 5rem;
+    width: 100%;
 }
 .foto{
     width: 80rem;
 }
 .disclosure{
+    margin: 2rem;
     background-color: #4f42e1;
     color: #bcb9db;
     display: flex;
     flex-direction: column;
     align-items: center;
+    font-family: 'Jaldi';
+    color: white;
+    font-weight: bold;
+    font-size: 1.5rem;
 }
 .submenu{
     margin: 0px;
     padding: none;
+}
+.botonBienvenida{
+    margin: 1.5rem;
 }

@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import Tittle from '../../Components/Tittle/tittle.js'
 import Menu from '../../Components/Menu/menu'
 import Bienvenida from "../../Components/Bienvenida/bienvenida.js";
+import Footer from "../../Components/Footer/footer";
 
 const HomePage = () => {
     const {slug} = useParams();
@@ -12,6 +13,7 @@ const HomePage = () => {
             <Tittle></Tittle>
             <Menu></Menu>
             <Bienvenida></Bienvenida>
+            <Footer></Footer>
         </>
     )
 }

@@ -2,21 +2,20 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import Tittle from '../../Components/Tittle/tittle.js'
 import Menu from '../../Components/Menu/menu'
-import LoginForm from '../../Components/LoginForm/loginform'
+import PetProfile from "../../Components/PetProfile/petProfile";
 import Footer from "../../Components/Footer/footer.js";
 
-
-const LoginPage = () => {
+const PetProfilePage = () => {
     const {slug} = useParams();
 
     return(
         <>
             <Tittle></Tittle>
             <Menu ></Menu>
-            <LoginForm></LoginForm>
+            <PetProfile></PetProfile>
             <Footer></Footer>
         </>
     )
 }
 
-export default LoginPage
+export default PetProfilePage
