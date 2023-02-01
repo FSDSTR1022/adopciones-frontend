@@ -5,14 +5,21 @@ import Menu from '../../Components/Menu/menu'
 import Perfil from '../../Components/Perfil/perfil'
 import Footer from "../../Components/Footer/footer.js";
 
+/*
+
+1. Declarar estado (useState)
+2. Declarar useEffect (fetch al backend)
+3. una vez recibida la info del BE, almacenarlo en el estado
+4. Pasar ese estado al hijo
+5. Usar esas props en el hijo (perfil.js)
+
+*/
+
 const MyUserPage = () => {
     const {slug} = useParams();
 
     return(<>
-            <Tittle></Tittle>
-            <Menu ></Menu>
             <Perfil></Perfil>
-            <Footer></Footer>
         </>
     )
 }

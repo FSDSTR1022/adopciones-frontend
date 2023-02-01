@@ -10,11 +10,16 @@ import RegistrationPage from './Navigation/RegistrationPage/registrationpage'
 import SuccessPage from './Navigation/SuccessPage/sucessPage'
 import AdoptionPage from './Navigation/AdoptionPage/adoptionPage'
 import PetProfilePage from './Navigation/PetProfilePage/petProfilePage'
+import Tittle from './Components/Tittle/tittle'
+import Menu from './Components/Menu/menu'
+import Footer from "./Components/Footer/footer.js";
 
 function App() {
   return (
     <ChakraProvider>
       <BrowserRouter>
+        <Tittle></Tittle>
+        <Menu ></Menu>
         <Routes>
           <Route path='/' element={<HomePage/>}></Route>
           <Route path='/pets' element={<PetsPage/>}></Route>
@@ -26,6 +31,7 @@ function App() {
           <Route path='/adoption' element={<AdoptionPage/>}></Route>
           <Route path='/petprofile' element={<PetProfilePage/>}></Route>
         </Routes>
+        <Footer></Footer>
       </BrowserRouter>
     </ChakraProvider>
 );}
