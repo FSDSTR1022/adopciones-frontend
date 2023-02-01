@@ -1,0 +1,52 @@
+.footergeneral{
+    background-color: #231f20;
+}
+.footergeneral h1{
+    font-family: 'Jaldi';
+    color: #f23084;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+.footergeneral h2{
+    font-family: 'Jaldi';
+    color: white;
+    font-size: 1rem;
+}
+.footergeneral h3{
+    font-family: 'Jaldi';
+    color: #bcb9db;
+    font-size: 0.8rem;
+}
+.filosofia{
+    display: flex;
+    flex-direction: column;
+    width: 30rem;
+    text-align: justify;
+}
+.footer1{
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem;
+}
+.imagen{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 15rem;
+}
+.footer2{
+    display: flex;
+    justify-content: space-between;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+}
+#condiciones{
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+}
+#condiciones a:hover{
+    color: #ffc61b;
+}

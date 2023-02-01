@@ -20,11 +20,14 @@ const Menu = () => {
             <BreadcrumbItem className="menu2" padding={4} colorScheme='yellow'>
                 <BreadcrumbLink href='myuser' className="menu3" ><Link to='/myprofile'/>Mi Perfil</BreadcrumbLink>
             </BreadcrumbItem>
+
             </div>
         
             <ButtonGroup spacing='2' paddingRight={8} paddingBottom={0}>
                 <Button className="botonmenu" variant='solid' colorScheme='yellow' color='white' bg='#f23084' href='Login' height='2rem' as={Link} to='/login' > Log-in </Button>
             </ButtonGroup> 
+
+            
         </Breadcrumb>
         </div>
 }

@@ -1,0 +1,15 @@
+.fitrosbox{
+    display: flex;
+    gap: 1rem
+}
+.filtrostitulo{
+    margin-top: 7rem;
+    font-size: 1rem;
+    align-self: left;
+    margin-left: 7rem;
+    color: #4f42e1;
+    font-weight: bold;
+}
+.tags{
+    margin-top: 7rem;
+}
