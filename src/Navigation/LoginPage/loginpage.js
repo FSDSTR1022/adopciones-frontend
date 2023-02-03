@@ -11,10 +11,9 @@ const LoginPage = () => {
 
     return(
         <>
-            <Tittle></Tittle>
-            <Menu ></Menu>
+
             <LoginForm></LoginForm>
-            <Footer></Footer>
+
         </>
     )
 }

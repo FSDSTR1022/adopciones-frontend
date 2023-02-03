@@ -11,10 +11,9 @@ const RegistrationPage = () => {
 
     return(
         <>
-            <Tittle></Tittle>
-            <Menu ></Menu>
+
             <RegistrationForm></RegistrationForm>
-            <Footer></Footer>
+
         </>
     )
 }

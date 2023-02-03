@@ -10,10 +10,7 @@ const HomePage = () => {
 
     return(
         <>
-            <Tittle></Tittle>
-            <Menu></Menu>
             <Bienvenida></Bienvenida>
-            <Footer></Footer>
         </>
     )
 }

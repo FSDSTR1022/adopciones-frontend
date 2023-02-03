@@ -11,10 +11,9 @@ const SuccessPage = () => {
 
     return(
         <>
-            <Tittle></Tittle>
-            <Menu ></Menu>
+
             <Success></Success>
-            <Footer></Footer>
+
         </>
     )
 }

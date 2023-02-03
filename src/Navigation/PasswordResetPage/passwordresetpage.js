@@ -10,10 +10,9 @@ const PetsPage = () => {
 
     return(
         <>
-            <Tittle></Tittle>
-            <Menu ></Menu>
+
             <PasswordReset></PasswordReset>
-            <Footer></Footer>
+
         </>
     )
 }

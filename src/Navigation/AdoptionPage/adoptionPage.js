@@ -10,10 +10,9 @@ const AdoptionPage = () => {
 
     return(
         <>
-            <Tittle></Tittle>
-            <Menu></Menu>
+
             <AdoptionForm></AdoptionForm>
-            <Footer></Footer>
+
         </>
     )
 }
