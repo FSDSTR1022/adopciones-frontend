@@ -4,14 +4,15 @@ import PetProfile from "../../Components/PetProfile/petProfile";
 
 const PetProfilePage = () => {
     const {slug} = useParams();
-    const [petProfile, setProfile] = useState([])
+    const [petProfile, setProfile] = useState({})
+    const {id} = useParams()
     
     useEffect(() => {
         const getProfile = async () => {
-            const petData = await fetch('http://localhost:8000/pets')
+            const petData = await fetch(`http://localhost:8000/pets/${id}`)
             const profiles = await petData.json()
-            setProfile(profiles)
-            console.log ('profile es: ', profiles)
+            setProfile(profiles.petId)
+            console.log ('profile es: ', profiles.petId)
         }
         getProfile()
     }, [])

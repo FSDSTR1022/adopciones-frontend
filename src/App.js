@@ -27,7 +27,7 @@ function App() {
           <Route path='/passwordreset' element={<PasswordResetPage/>}></Route>
           <Route path='/success' element={<SuccessPage/>}></Route>
           <Route path='/adoption' element={<AdoptionPage/>}></Route>
-          <Route path='/petprofile' element={<PetProfilePage/>}></Route>
+          <Route path='/pets/:id' element={<PetProfilePage/>}></Route>
         </Routes>
         <Footer></Footer>
       </BrowserRouter>
