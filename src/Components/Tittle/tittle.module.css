@@ -7,17 +7,17 @@
     justify-content: center;
     background-color: white;
     color: #4f42e1;
+    z-index: 9998;
 }
 .logoName{
     width: 10rem;
-    position: fixed;
-    top: 0;
     margin: 0.5rem;
+    z-index: 9999;
 }
 .logoCat{
     width: 5rem;
     margin-left: 2rem;
     position: fixed;
     top: 0;
-    left: 0;
+    z-index: 9999;
 }

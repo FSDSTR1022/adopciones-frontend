@@ -10,21 +10,21 @@ const Menu = () => {
             <div >
            
             <BreadcrumbItem className="menu2" padding={4}>
-               <BreadcrumbLink href='/' className="menu3" ><Link to='/'/>Home</BreadcrumbLink>
+               <BreadcrumbLink href='/' className="menu3" ><Link to='http://localhost:3000/'/>Home</BreadcrumbLink>
             </BreadcrumbItem>
 
             <BreadcrumbItem className="menu2" padding={4}>
-               <BreadcrumbLink href='pets' className="menu3" ><Link to='/pets'/>Mascotas</BreadcrumbLink>
+               <BreadcrumbLink href='pets' className="menu3" ><Link to='http://localhost:3000/pets'/>Mascotas</BreadcrumbLink>
             </BreadcrumbItem>
 
             <BreadcrumbItem className="menu2" padding={4} colorScheme='yellow'>
-                <BreadcrumbLink href='myuser' className="menu3" ><Link to='/myprofile'/>Mi Perfil</BreadcrumbLink>
+                <BreadcrumbLink href='myuser' className="menu3" ><Link to='http://localhost:3000/myprofile'/>Mi Perfil</BreadcrumbLink>
             </BreadcrumbItem>
 
             </div>
         
             <ButtonGroup spacing='2' paddingRight={8} paddingBottom={0}>
-                <Button className="botonmenu" variant='solid' colorScheme='yellow' color='white' bg='#f23084' href='Login' height='2rem' as={Link} to='/login' > Log-in </Button>
+                <Button className="botonmenu" variant='solid' colorScheme='yellow' color='white' bg='#f23084' href='Login' height='2rem' as={Link} to='http://localhost:3000/login' > Log-in </Button>
             </ButtonGroup> 
 
             

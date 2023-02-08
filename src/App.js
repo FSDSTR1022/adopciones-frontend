@@ -21,7 +21,7 @@ function App() {
         <Routes>
           <Route path='/' element={<HomePage/>}></Route>
           <Route path='/pets' element={<PetsPage/>}></Route>
-          <Route path='/myuser' element={<MyUserPage/>}></Route>
+          <Route path='/users/:id' element={<MyUserPage/>}></Route>
           <Route path='/login' element={<LoginPage/>}></Route>
           <Route path='/register' element={<RegistrationPage/>}></Route>
           <Route path='/passwordreset' element={<PasswordResetPage/>}></Route>

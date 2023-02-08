@@ -9,7 +9,7 @@ const AdoptionForm = () => {
 return  <div className="formderegistro">
         <Card maxW='lg' className="fichalogin" fontFamily='Jaldi' variant = 'outline'>
         <CardBody display="flex" alignItems="center" flexDirection='column' justifyContent="center">
-            <Text color='#4f42e1' fontSize='3xl'fontWeight="bold"> Solicita la Adopción de <br/> Nombre del Gato </Text>
+            <Text color='#4f42e1' fontSize='3xl'fontWeight="bold"> Solicitud de Adopción </Text>
             <div className="registro1">
                 <Text className='textos' color='#4f42e1' fontSize='md'fontWeight="bold" > Nombre: </Text>
                 <Input className='inputs' size='lg' variant='filled' placeholder='Introduce tu nombre' _placeholder={{ color: '#bcb9db' }}/> 

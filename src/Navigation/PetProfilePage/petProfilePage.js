@@ -20,7 +20,6 @@ const PetProfilePage = () => {
 
             <PetProfile petProfile={petProfile}></PetProfile> 
         </>
-    )
-}
+    )}
 
 export default PetProfilePage 
