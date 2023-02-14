@@ -1,35 +1,23 @@
 import React from "react";
-import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, ButtonGroup, Button } from '@chakra-ui/react'
-import "./menu.css"
-import {Link} from 'react-router-dom'
+import styles from './menu.module.css'
 
 const Menu = () => {
-    return <div > 
-        
-        <Breadcrumb separator='-' className="menu1" fontFamily='Jaldi' paddingLeft={0} paddingBottom={2} >
-            <div >
-           
-            <BreadcrumbItem className="menu2" padding={4}>
-               <BreadcrumbLink href='/' className="menu3" ><Link to='http://localhost:3000/'/>Home</BreadcrumbLink>
-            </BreadcrumbItem>
-
-            <BreadcrumbItem className="menu2" padding={4}>
-               <BreadcrumbLink href='pets' className="menu3" ><Link to='http://localhost:3000/pets'/>Mascotas</BreadcrumbLink>
-            </BreadcrumbItem>
-
-            <BreadcrumbItem className="menu2" padding={4} colorScheme='yellow'>
-                <BreadcrumbLink href='myuser' className="menu3" ><Link to='http://localhost:3000/myprofile'/>Mi Perfil</BreadcrumbLink>
-            </BreadcrumbItem>
+    return <div className={styles.menuGeneral}> 
+                <div className={styles.menu}>
+                    <nav >
+                        <ul className={styles.menulista}>
+                            <li><a href="/">Home</a></li>
+                            <li><a href="/pets">Mascotas</a></li>
+                            <li><a href="users">Usuarios</a></li>
+                            <li><a href="shelters">Protectoras</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div >
+                    <button className={styles.boton}><a href="login">Log-in</a></button>
+                </div>
 
             </div>
-        
-            <ButtonGroup spacing='2' paddingRight={8} paddingBottom={0}>
-                <Button className="botonmenu" variant='solid' colorScheme='yellow' color='white' bg='#f23084' href='Login' height='2rem' as={Link} to='http://localhost:3000/login' > Log-in </Button>
-            </ButtonGroup> 
-
-            
-        </Breadcrumb>
-        </div>
 }
 
 export default Menu

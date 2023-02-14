@@ -1,0 +1,91 @@
+.formularioRegistro h2{
+    font-family: 'Jaldi';
+    font-weight: bold;
+    color: #4f42e1;
+    font-size: 2.5rem;
+}
+.formularioRegistro h3{
+    font-family: 'Jaldi';
+    color: #4f42e1;
+    font-weight: bold;
+    font-size: 1rem;
+}
+.formularioRegistro input, option{
+    font-family: 'Jaldi';
+    color: black;
+    font-size: 1.0rem;
+    display: flex;
+}
+
+input::placeholder{
+    font-family: 'Jaldi';
+    font-size:1rem;
+    color: #bcbadf;
+}
+.formderegistro{
+    align-items: center;
+    margin-bottom: 3rem;
+    margin-top: 6.5rem;
+    margin-bottom: 3rem;
+    display: flex;
+    flex-direction: column;
+    padding-left: 3rem;
+    padding-right: 3rem;
+}
+.datosform{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #bcb9db;
+    border-radius: 15px;
+    padding: 1rem;
+    margin-bottom: 3rem;
+}
+.dataEntry{
+    gap: 2rem;
+    margin: 0.5rem;
+}
+.textos{
+}
+.inputs{
+    width: 20rem;
+    background-color: #edf2f7;
+    border-radius: 10px;
+    height: 3rem;
+    padding: 1rem;
+}
+.inputsDescr{
+    width: 20rem;
+    background-color: #edf2f7;
+    border-radius: 10px;
+    height: 7rem;
+    padding: 1rem;
+}
+.inputs:hover{
+    background-color: #e2e8f0;
+}
+.formularioRegistro{
+    margin-top: 7rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.button{
+    display: flex;
+    background-color: #f23084;
+    color: white;
+    font-family: 'Jaldi';
+    font-weight: bold;
+    font-size: 1.2rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    height: 2rem;
+    border-radius: 10px;
+}
+hr.divider {
+    border-top: 1px solid #bcb9db;
+    border-radius: 5px;
+    width: 90%;
+    display: flex;
+    margin: 1rem;
+  }

@@ -8,7 +8,7 @@ function PasswordRegOnce() {
   
     return (<div className="passwordgrupoOnce">
       <InputGroup size='md'>
-        <Text className="psswtextOnce" color='#4f42e1' fontSize='md'fontWeight="bold" > Contraseña: </Text>
+        <Text className="psswtextOnce" color='#4f42e1' fontSize='1rem'fontWeight="bold" > Contraseña: </Text>
         <Input
             className="psswInputOnce"
             size='lg'

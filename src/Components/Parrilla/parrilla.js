@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./parrilla.module.css"
-import { Card, CardBody, ButtonGroup, CardFooter, Image,Stack, Heading, Text, Divider,Button } from '@chakra-ui/react'
+import { ButtonGroup, Image, Button } from '@chakra-ui/react'
 import PetFilter from './petFilter'
 import {Link} from 'react-router-dom'
 

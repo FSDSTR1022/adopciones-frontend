@@ -1,57 +1,77 @@
 import React from "react";
-import "./registrationform.css"
-import { Card, CardBody, Text, Divider, Input, CardFooter, ButtonGroup, Button } from '@chakra-ui/react'
+import style from "./registrationform.module.css"
 import PasswordRegistration from '../PasswordRegistration/passwordregistration'
-import {Link} from 'react-router-dom'
-
+import { useForm } from "react-hook-form";
 
 const RegistrationForm = () => {
-   
-return  <div className="formderegistro">
-        <Card maxW='lg' className="fichalogin" fontFamily='Jaldi' variant = 'outline'>
-        <CardBody display="flex" alignItems="center" flexDirection='column' justifyContent="center">
-            <Text color='#4f42e1' fontSize='3xl'fontWeight="bold" > Regístrate </Text>
-            <div className="registro1">
-                <Text className='textos' color='#4f42e1' fontSize='md'fontWeight="bold" > Nombre: </Text>
-                <Input className='inputs' size='lg' variant='filled' placeholder='Introduce tu nombre' _placeholder={{ color: '#bcb9db' }}/> 
-            </div>
-            <div className="registro1">
-                <Text className='textos' color='#4f42e1' fontSize='md'fontWeight="bold" > Email: </Text>
-                <Input className='inputs' size='lg' variant='filled' placeholder='Introduce tu email' _placeholder={{ color: '#bcb9db' }}/> 
-            </div>
-            <div>
-                <PasswordRegistration></PasswordRegistration>
-            </div>
-            <div className="registro1">
-                <Text className='textos'color='#4f42e1' fontSize='md'fontWeight="bold" > Género: </Text>
-                <Input className='inputs' size='lg' variant='filled' placeholder='(Hombre, Mujer, Otro)' _placeholder={{ color: '#bcb9db' }}/> 
-            </div>
-            <div className="registro1">
-                <Text className='textos' color='#4f42e1' fontSize='md'fontWeight="bold" > Tipo de documento: </Text>
-                <Input className='inputs' size='lg' variant='filled' placeholder='(NIE, NIF, Otro)' _placeholder={{ color: '#bcb9db' }}/> 
-            </div>
-            <div className="registro1">
-                <Text className='textos' color='#4f42e1' fontSize='md'fontWeight="bold" > Número de documento: </Text>
-                <Input className='inputs' size='lg' variant='filled' placeholder='Introduzca número de documento' _placeholder={{ color: '#bcb9db' }}/> 
-            </div>
-            <div className="registro1">
-                <Text className='textos' color='#4f42e1' fontSize='md'fontWeight="bold" > Teléfono: </Text>
-                <Input className='inputs' csize='lg' variant='filled' placeholder='Introduzca número de teléfono' _placeholder={{ color: '#bcb9db' }}/> 
-            </div>
-            <div className="registro1">
-                <Text  className='textos' color='#4f42e1' fontSize='md'fontWeight="bold" > Descripción: </Text>
-                <Input h='8rem' className='inputs' size='lg' variant='filled' placeholder='Introduzca descripción' _placeholder={{ color: '#bcb9db' }}/> 
-            </div>
+        const {register, handleSubmit} = useForm()
+        async function handleRegistration (data) {
+            console.log(data)
+                return await fetch(`http://localhost:8000/users`, {
+                    method:'POST',
+                    mode:'cors',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data),
+                }).then(res => res = res.json())
+                .catch(error => console.log(error));
+    }
 
-        </CardBody>
-        <Divider/>
-        <CardFooter display='flex' justifyContent='right'>
-            <ButtonGroup spacing='20' >
-                <Button variant='solid' colorScheme='yellow' color='white' className="botonficha" bg='#f23084' fontSize='xl' as={Link} to='/success'>Enviar</Button>
-            </ButtonGroup>
-        </CardFooter>
-        </Card>
-            </div>
+        return(<><form 
+                onSubmit={handleSubmit(handleRegistration)}
+                className={style.formularioRegistro}>  
+                <h2>Regístrate</h2>
+                <div className={style.datosform}>
+                    <div>
+                        <div className={style.dataEntry}>
+                            <h3 className={style.textos}>Nombre: </h3>
+                            <input className={style.inputs} placeholder='Introduzca su nombre' name='name '{...register('name')}></input>
+                        </div>
+                        <div className={style.dataEntry}>
+                            <h3 className={style.textos}>Email: </h3>
+                            <input  className={style.inputs} placeholder='Introduzca su email' {...register('email')}></input>
+                        </div>
+
+                        <div className={style.dataEntry}>
+                            <h3 className={style.textos}>Teléfono: </h3>
+                            <input  className={style.inputs} placeholder='Introduzca su teléfono' {...register('phone')}></input>
+                        </div>
+                        <div className={style.dataEntry}>
+                            <h3 className={style.textos}>Género: </h3>
+                            <select {...register('gender')} className={style.inputs}  >
+                                <option value='hombre'>Hombre</option>
+                                <option value='mujer'>Mujer</option>
+                                <option value='otro'>Otro</option>
+                            </select>
+                        </div>
+                        <div className={style.dataEntry}>
+                            <h3 className={style.textos}>Tipo de documento: </h3>
+                            <select {...register('idtype')} className={style.inputs}>
+                                <option value='nie'>NIE</option>
+                                <option value='nif'>NIF</option>
+                                <option value='otro'>Otro</option>
+                            </select>
+                        </div>
+                        <div className={style.dataEntry}>
+                            <h3 className={style.textos}>Número de documento: </h3>
+                            <input {...register('idNumber')} placeholder='Introduzca su número de documento' className={style.inputs}></input>
+                        </div>
+                        <div className={style.dataEntry}>
+                            <h3 className={style.textos}>Descripción: </h3>
+                            <input {...register('description')} placeholder='Descríbase' className={style.inputsDescr}></input>
+                        </div>
+                        <PasswordRegistration></PasswordRegistration>
+                    </div>
+                    <hr className={style.divider}></hr>
+                    <div >
+                        <div className={style.button}>
+                            <button>Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+</>)
 }
 
 export default RegistrationForm

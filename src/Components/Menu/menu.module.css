@@ -1,0 +1,43 @@
+.menuGeneral{
+    z-index: 9999;
+    position:fixed;
+    top: 0;
+    margin-top: 3rem;
+    width: 100%;
+    height: 3rem;
+    background-color: #4f42e1;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.menu{
+    font-family: 'Jaldi';
+    font-weight: bold;
+    font-size: 1rem;
+}
+.menulista{
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    gap: 1rem;
+    color: #bcb9db;
+}
+li:hover{    
+    color: #f23084;
+    text-decoration: underline;
+}
+
+.boton{
+    background-color: #f23084;
+    color: white;
+    font-family: 'Jaldi';
+    font-weight: bold;
+    padding: 0.4rem;
+    width: 4rem;
+    border-radius: 8px;
+}
+.boton:hover{    
+    background-color: #ffc61b;
+}

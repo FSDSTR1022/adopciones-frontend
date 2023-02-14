@@ -8,7 +8,7 @@ function PasswordRegRepeat() {
   
     return (<div className="passwordgrupoRepeat">
       <InputGroup size='md' >
-        <Text className="psswtextRepeat" color='#4f42e1' fontSize='md'fontWeight="bold" > Repita la contraseña: </Text>
+        <Text className="psswtextRepeat" color='#4f42e1' fontSize='1rem'fontWeight="bold" > Repita la contraseña: </Text>
         <Input
             className="psswInputRepeat"
             size='lg'

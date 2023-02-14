@@ -1,5 +1,5 @@
 import React from "react";
-import { Image, Card, CardBody, Text, Stack, Heading, Divider, CardFooter, ButtonGroup, Button } from '@chakra-ui/react'
+import { Image, Stack, ButtonGroup, Button } from '@chakra-ui/react'
 import styles from "../PetProfile/petProfile.module.css"
 import {Link} from 'react-router-dom'
 
@@ -13,7 +13,7 @@ const Perfil = ({userProfile}) => {
                                 alt='' borderRadius='lg'/>
                                 <hr className={styles.divider}></hr>
                                 <div className={styles.smallestInfo}>
-                                    <h3 >{userProfile.userName}</h3>
+                                    <h3 >{userProfile.name}</h3>
                                     <h4 ><h5>Email</h5>: {userProfile.email}</h4>
                                     <h4 ><h5>Teléfono</h5>: {userProfile.phone}</h4>
                                 </div>
@@ -28,8 +28,13 @@ const Perfil = ({userProfile}) => {
                                 <hr className={styles.divider}></hr>
                                 <Stack className={styles.button}>
                                     <ButtonGroup spacing='0' >
+                                        <div >
                                         <Button variant='ghost' colorScheme='pink' color='#4f42e1' as={Link} to='/passwordreset' >Cambiar Contraseña</Button>
-                                        <Button variant='solid' colorScheme='yellow' color='white' as={Link} to='/adoption' bg='#f23084' fontSize='xl'>Editar perfil</Button>
+                                        <Button variant='ghost' colorScheme='pink' color='#4f42e1' >Editar perfil</Button>
+                                        </div>
+                                        <div >
+                                        <Button variant='solid' colorScheme='yellow' color='white' as={Link} to='/pets/newpet' bg='#f23084' fontSize='xl'>Añadir mascota</Button>
+                                        </div>
                                     </ButtonGroup>
                                 </Stack>
                             </div>
