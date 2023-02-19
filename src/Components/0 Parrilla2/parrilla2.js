@@ -1,12 +1,11 @@
 import React, {useState, useEffect} from "react";
-import styles from "./parrilla.module.css"
+import styles from "./parrilla2.module.css"
 import { Image, } from '@chakra-ui/react'
-import Filter from '../Filter/filter'
 import { useParams } from "react-router-dom";
 
 
 
-const Parrilla = ({allItems, category}) => { 
+const Parrilla = ({allItems, category, filteredItems}) => { 
 
     const {slug} = useParams();
     const [items, setItem] = useState([]);

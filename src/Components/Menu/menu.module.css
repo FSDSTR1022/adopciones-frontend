@@ -36,6 +36,7 @@ li:hover{
     font-weight: bold;
     padding: 0.4rem;
     width: 4rem;
+    height: 2rem;
     border-radius: 8px;
 }
 .boton:hover{    

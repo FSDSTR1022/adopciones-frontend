@@ -1,11 +1,12 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import NewPetForm from '../../Components/NewPetForm/newPetForm'
+import RegistrationForm from "../../Components/RegistrationForm/registrationform";
 
 const NewPetPage = () => {
     const {slug} = useParams();
+    console.log('hola')
     return(<>
-            <NewPetForm></NewPetForm>
+            <RegistrationForm category={'pets'}></RegistrationForm>
         </>
 )}
 export default NewPetPage

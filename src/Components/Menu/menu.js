@@ -8,13 +8,13 @@ const Menu = () => {
                         <ul className={styles.menulista}>
                             <li><a href="/">Home</a></li>
                             <li><a href="/pets">Mascotas</a></li>
-                            <li><a href="users">Usuarios</a></li>
-                            <li><a href="shelters">Protectoras</a></li>
+                            <li><a href="/users">Usuarios</a></li>
+                            <li><a href="/shelters">Protectoras</a></li>
                         </ul>
                     </nav>
                 </div>
                 <div >
-                    <button className={styles.boton}><a href="login">Log-in</a></button>
+                    <button className={styles.boton}><a href="/login">Log-in</a></button>
                 </div>
 
             </div>

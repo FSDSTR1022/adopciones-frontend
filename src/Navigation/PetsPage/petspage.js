@@ -1,10 +1,11 @@
 import React , {useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Parrilla from "../../Components/Parrilla/parrilla.js";
+import Filter from "../../Components/Filter/filter";
 
 const PetsPage = () => {
     const {slug} = useParams();
-    const [allPets, setPet] = useState([]);
+    const [allItems, setPet] = useState([]);
 
     useEffect(() => {
         const getPet = async () => {
@@ -17,7 +18,8 @@ const PetsPage = () => {
     }, [])
 
     return(<>
-        <Parrilla allPets={allPets}></Parrilla>
+        {/* <Filter allItems={allItems} category={'pets'}></Filter> */}
+        <Parrilla allItems={allItems} category={'pets'}></Parrilla> 
         </>
     )
 }

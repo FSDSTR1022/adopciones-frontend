@@ -1,10 +1,10 @@
 import React, {useState, useEffect} from "react";
 import { useParams } from "react-router-dom";
-import PetProfile from "../../Components/PetProfile/petProfile";
+import Profile from "../../Components/Profile/profile";
 
 const PetProfilePage = () => {
     const {slug} = useParams();
-    const [petProfile, setProfile] = useState({})
+    const [profileData, setProfile] = useState({})
     const {id} = useParams()
     
     useEffect(() => {
@@ -17,8 +17,7 @@ const PetProfilePage = () => {
         getProfile()
     }, [])
     return(<>
-
-            <PetProfile petProfile={petProfile}></PetProfile> 
+            <Profile profileData={profileData} category='pets'></Profile>
         </>
     )}
 

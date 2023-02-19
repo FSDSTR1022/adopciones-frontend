@@ -3,10 +3,10 @@ import { Image, Stack, ButtonGroup, Button } from '@chakra-ui/react'
 import styles from "./shelterProfile.module.css"
 import {Link} from 'react-router-dom'
 
-const ShelterProfile = ({data}) => {
+const ShelterProfile = ({shelterProfile}) => {
     return <>
             <div className={styles.petProfilePage}> 
-                <h2 >Sobre mi</h2>
+                <h2 >Información del centro de Acogida</h2>
                 <div >
                     <div className={styles.petProfileBlocks}>
                         <div  className={styles.smallInfo}>
@@ -14,24 +14,30 @@ const ShelterProfile = ({data}) => {
                             alt='' borderRadius='lg'/>
                             <hr className={styles.divider}></hr>
                             <div className={styles.smallestInfo}>
-                                <h3 >{data.name}</h3>
-                                <h4 ><h5>Dirección</h5>: {data.address}</h4>
-                                <h4 ><h5>Teléfono</h5>: {data.phone}</h4>
+                                <h3 >{shelterProfile.name}</h3>
+                                <h4 ><a>Dirección</a>: {shelterProfile.address}</h4>
+                                <h4 ><a>Teléfono</a>: {shelterProfile.phone}</h4>
                             </div>
                         </div>
                         <div className={styles.bigInfo}>
                             <h3 >General Information</h3>
-                            <h4 key={data.email}><h5>Email</h5>: {data.email}</h4>
-                            <h4 key={data.idType}><h5>Raza</h5>: {data.idType}</h4>
+                            <h4 key={shelterProfile.email}><a>Email</a>: {shelterProfile.email}</h4>
+                            <h4 key={shelterProfile.idType}><a>Raza</a>: {shelterProfile.idType}</h4>
                             
                             <h3 >Descripción</h3>
-                            <h4 key={data.description}>{data.description}</h4>
+                            <h4 key={shelterProfile.description}>{shelterProfile.description}</h4>
                             <hr className={styles.divider}></hr>
                             <Stack className={styles.button}>
-                                <ButtonGroup spacing='0' >
-                                    <Button variant='solid' colorScheme='yellow' color='white' as={Link} to='/adoption' bg='#f23084' fontSize='xl'>Adopta</Button>
-                                </ButtonGroup>
-                            </Stack>
+                                    <ButtonGroup spacing='0' >
+                                        <div >
+                                        <Button variant='ghost' colorScheme='pink' color='#4f42e1' as={Link} to='/passwordreset' >Cambiar Contraseña</Button>
+                                        <Button variant='ghost' colorScheme='pink' color='#4f42e1' >Editar perfil</Button>
+                                        </div>
+                                        <div >
+                                        <Button variant='solid' colorScheme='yellow' color='white' as={Link} to='/pets/newpet' bg='#f23084' fontSize='xl'>Añadir mascota</Button>
+                                        </div>
+                                    </ButtonGroup>
+                                </Stack>
                         </div>
                     </div>
                 </div>

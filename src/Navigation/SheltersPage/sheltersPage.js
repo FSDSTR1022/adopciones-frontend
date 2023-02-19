@@ -1,11 +1,11 @@
 import React , {useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import ParrillaShelter from "../../Components/ParrillaShelter/parrillaShelter.js";
+import Parrilla from "../../Components/Parrilla/parrilla.js";
 
  
 const SheltersPage = () => {
     const {slug} = useParams();
-    const [allShelters, setShelter] = useState([]);
+    const [allItems, setShelter] = useState([]);
 
     useEffect(() => {
         const getShelters = async () => {
@@ -18,7 +18,7 @@ const SheltersPage = () => {
     }, [])
 
     return(<>
-        <ParrillaShelter allShelters={allShelters}></ParrillaShelter>
+        <Parrilla allItems={allItems} category={"shelters"}></Parrilla>
         </>
     )
 }

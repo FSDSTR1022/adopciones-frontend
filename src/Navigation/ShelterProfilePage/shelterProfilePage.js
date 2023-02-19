@@ -1,10 +1,10 @@
 import React, {useState, useEffect} from "react";
 import { useParams } from "react-router-dom";
-import ShelterProfile from "../../Components/ShelterProfile/shelterProfile";
+import Perfil from "../../Components/Profile/profile";
 
 const ShelterProfilePage = () => {
     const {slug} = useParams();
-    const [shelterProfile, setProfile] = useState({})
+    const [profileData, setProfile] = useState({})
     const {id} = useParams()
     
     useEffect(() => {
@@ -18,7 +18,7 @@ const ShelterProfilePage = () => {
     }, [])
     return(<>
 
-            <ShelterProfile shelterProfile={shelterProfile}></ShelterProfile> 
+            <Perfil profileData={profileData} category={'users'}></Perfil> 
         </>
     )}
 

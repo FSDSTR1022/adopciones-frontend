@@ -54,12 +54,14 @@ input::placeholder{
     height: 3rem;
     padding: 1rem;
 }
-.inputsDescr{
+.inputsBig{
     width: 20rem;
     background-color: #edf2f7;
     border-radius: 10px;
-    height: 7rem;
+    height: 3rem;
     padding: 1rem;
+    height: 6rem;
+    text-size-adjust: auto;
 }
 .inputs:hover{
     background-color: #e2e8f0;

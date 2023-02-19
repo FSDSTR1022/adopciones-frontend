@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import { useParams } from "react-router-dom";
-import Perfil from '../../Components/Perfil/perfil'
+import Profile from '../../Components/Profile/profile'
 
 /*
 1. Declarar estado (useState)
@@ -12,7 +12,7 @@ import Perfil from '../../Components/Perfil/perfil'
 
 const MyUserPage = () => {
     const {slug} = useParams();
-    const [userProfile, setProfile] = useState({})
+    const [profileData, setProfile] = useState({})
     const {id} = useParams()
     
     useEffect(() => {
@@ -25,7 +25,7 @@ const MyUserPage = () => {
         getProfile()
     }, [])
     return(<>
-            <Perfil userProfile={userProfile}></Perfil>
+            <Profile profileData={profileData} category={'users'}></Profile>
         </>
     )
 }

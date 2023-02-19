@@ -1,11 +1,11 @@
 import React , {useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import ParrillaUsers from "../../Components/ParrillaUsers/parrillaUsers.js";
+import Parrilla from "../../Components/Parrilla/parrilla.js";
 
  
 const UsersPage = () => {
     const {slug} = useParams();
-    const [allUsers, setUsers] = useState([]);
+    const [allItems, setUsers] = useState([]);
 
     useEffect(() => {
         const getUsers = async () => {
@@ -18,7 +18,7 @@ const UsersPage = () => {
     }, [])
 
     return(<>
-        <ParrillaUsers allUsers={allUsers}></ParrillaUsers>
+        <Parrilla allItems={allItems} category={'users'}></Parrilla>
         </>
     )
 }

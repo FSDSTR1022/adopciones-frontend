@@ -5,7 +5,7 @@ import RegistrationForm from '../../Components/RegistrationForm/registrationform
 const RegistrationPage = () => {
     const {slug} = useParams();
     return(<>
-            <RegistrationForm></RegistrationForm>
+            <RegistrationForm category={'users'}></RegistrationForm>
         </>
 )}
 export default RegistrationPage

@@ -20,7 +20,7 @@ return  <div className="formdelogin">
             <CardFooter display='flex' textAlign='center' justifyContent='space-around'>
                 <ButtonGroup spacing='20' >
                     <Text color='#4f42e1' fontSize='md' > ¿No eres usuario? </Text>
-                    <Button variant='solid' colorScheme='yellow' color='white' className="botonficha" bg='#f23084' fontSize='xl' as={Link} to='/register'>Regístrate Aquí</Button>
+                    <Button variant='solid' colorScheme='yellow' color='white' className="botonficha" bg='#f23084' fontSize='xl' as={Link} to='/users/newuser'>Regístrate Aquí</Button>
                 </ButtonGroup>
             </CardFooter>
             </Card>

@@ -49,4 +49,6 @@
 }
 #condiciones a:hover{
     color: #ffc61b;
+    text-decoration: underline;
+    font-weight: bold;
 }
