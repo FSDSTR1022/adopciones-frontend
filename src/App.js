@@ -22,7 +22,7 @@ function App() {
   return (
     <ChakraProvider>
       <BrowserRouter>
-        {/* <Header></Header> */}
+        <Header></Header>
         <Routes>
           <Route path='/' element={<HomePage/>}></Route>
           <Route path='/pets' element={<PetsPage/>}></Route>
@@ -30,7 +30,10 @@ function App() {
           <Route path='/pets2' element={<PetsPage2/>}></Route>
 
           <Route path='/pets/:id' element={<PetProfilePage/>}></Route>
+          <Route path='/pets/adoption/:id' element={<AdoptionPage/>}></Route>
+
           <Route path='/pets/newpet' element={<NewPetPage/>}></Route>
+          <Route path='/users' element={<UsersPage/>}></Route>
           <Route path='/users/:id' element={<MyUserPage/>}></Route>
           <Route path='/users/newuser' element={<RegistrationPage/>}></Route>
           <Route path='/login' element={<LoginPage/>}></Route>
@@ -39,7 +42,6 @@ function App() {
           <Route path='/adoption' element={<AdoptionPage/>}></Route>
           <Route path='/shelters' element={<SheltersPage/>}></Route>
           <Route path='/shelters/:id' element={<ShelterProfilePage/>}></Route>
-          <Route path='/users' element={<UsersPage/>}></Route>
           {/* <Route path='/users/:id' element={<UsersProfilePage/>}></Route> */}
         </Routes>
         <Footer></Footer>

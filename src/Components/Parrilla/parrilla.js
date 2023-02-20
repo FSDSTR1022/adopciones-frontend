@@ -22,8 +22,11 @@ const Parrilla = ({allItems, category}) => {
     }, [])
 
     return  <>
-
+            <div className={styles.preParrilla}>
+                {category== 'users' ? <h2 >Usuarios </h2> : null}
+            </div>
             <div className={styles.parrilla}>
+                
             {allItems.map((item)=>(<>
                 <div className={styles.fichaPet} key={item._id}>
 

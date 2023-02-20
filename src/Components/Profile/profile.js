@@ -2,7 +2,6 @@ import React from "react";
 import { Image } from '@chakra-ui/react'
 import styles from "./profile.module.css"
 import { useParams} from 'react-router-dom'
-import Parrilla from "../Parrilla/parrilla";
 
 const Profile = ({profileData, category}) => {
 
@@ -30,7 +29,7 @@ const Profile = ({profileData, category}) => {
     // }
 
     return  <>  <div className={styles.petProfilePage}> 
-                    <h2 >Mi perfil</h2>
+                    <h2 >Mi perfil</h2> 
                     <div >
                         <div className={styles.petProfileBlocks}>
                             <div  className={styles.smallInfo}>
@@ -76,7 +75,7 @@ const Profile = ({profileData, category}) => {
                                             <button> <a href={`/pets/newpet`} >Añadir mascota</a></button>
                                         </div> : 
                                         <div className={styles.botonCreate}>
-                                            <button> <a href={`/adoption`} >Adopta</a></button>
+                                            <button> <a href={`/${category}/adoption/${profileData._id}`} >Adopta</a></button> 
                                         </div>
                                     }
                                 </div>

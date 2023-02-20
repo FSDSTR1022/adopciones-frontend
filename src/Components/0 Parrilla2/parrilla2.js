@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 
 
 
-const Parrilla = ({allItems, category, filteredItems}) => { 
+const Parrilla = ({allItems, category}) => { 
 
     const {slug} = useParams();
     const [items, setItem] = useState([]);
@@ -14,7 +14,6 @@ const Parrilla = ({allItems, category, filteredItems}) => {
         const getPet = async () => {
             const rawData = await fetch('http://localhost:8000/pets')
             const items = await rawData.json()
-            console.log(items)
             setItem(items)
         }
         getPet()
