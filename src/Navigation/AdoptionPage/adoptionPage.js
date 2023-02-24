@@ -9,17 +9,18 @@ const AdoptionPage = () => {
     
     useEffect(() => {
         const getProfile = async () => {
-            const petData = await fetch(`http://localhost:8000/pets/adoption/${id}`) 
-            const profiles = await petData.json()
-            setProfile(profiles.petId)
-            console.log ('profile es: ', profiles.petId)
+            const itemData = await fetch(`http://localhost:8000/pets/adoption/${id}`)
+            const profile = await itemData.json()
+            setProfile(profile.petId)
+            console.log ('profile es: ', profile.petId)
         }
         getProfile()
     }, [])
+    console.log(profileData)
     return(
         <>
 
-            <AdoptionForm profileData={profileData} category='adoptionReq'></AdoptionForm> 
+            <AdoptionForm profileData={profileData} category='adoption'></AdoptionForm> 
 
         </>
     )

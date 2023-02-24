@@ -3,7 +3,8 @@ import style from "./registrationform.module.css"
 import PasswordRegistration from '../PasswordRegistration/passwordregistration'
 import { useForm } from "react-hook-form";
 
-const RegistrationForm = ({category}) => {
+const RegistrationForm = ({profileData, category}) => {
+    console.log('profileData es', profileData)
         //files 
         const [image, setImage] = useState()
         const [url, setUrl] = useState("")
@@ -54,7 +55,7 @@ const RegistrationForm = ({category}) => {
                             <div>
                                 <div className={style.dataEntry}>
                                     <h3 className={style.textos}>Nombre: </h3>
-                                    <input className={style.inputs} placeholder='Introduzca el nombre' name='name '{...register('name')}></input>
+                                    <input className={style.inputs} defaultValue={profileData.name} /*no me sirve para el form de editar y de nuevo item*/ placeholder='Introduzca el nombre'  name='name '{...register('name')}></input>
                                 </div>                                
                                 <div className={style.dataEntry}>
                                     <h3 className={style.textos}>Tipo: </h3>

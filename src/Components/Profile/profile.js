@@ -3,30 +3,26 @@ import { Image } from '@chakra-ui/react'
 import styles from "./profile.module.css"
 import { useParams} from 'react-router-dom'
 
+
+
+
+
 const Profile = ({profileData, category}) => {
 
-    const deleteItem = async() =>{
     const {id} = useParams()
-        
+
+    async function deleteItem() {
     const itemData = await fetch(`http://localhost:8000/${category}/${id}`, {
         method:'DELETE',
         mode:'cors',
         headers:{'Content-Type': 'application/json',},
         body:JSON.stringify()
-    })}
+    })
+    console.log('itemData: ', itemData)
+}
 
-    // function getAge({profileData.birthDate}) 
-    // {
-    //     var today = new Date();
-    //     var birthDate = new Date(dateString);
-    //     var age = today.getFullYear() - birthDate.getFullYear();
-    //     var m = today.getMonth() - birthDate.getMonth();
-    //     if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) 
-    //     {
-    //         age--;
-    //     }
-    //     return age;
-    // }
+
+
 
     return  <>  <div className={styles.petProfilePage}> 
                     <h2 >Mi perfil</h2> 
@@ -67,15 +63,15 @@ const Profile = ({profileData, category}) => {
                                 <div className={styles.botonTotal}>
                                     <div className={styles.botonOpciones}>
                                         {category == 'users' ? <button > <a href={`/passwordreset`}>Cambiar Contraseña</a></button> : null}
-                                        <button > <a>Editar perfil</a></button>
-                                        <button onClick={deleteItem}><a>Eliminar perfil</a></button>
+                                        <button > <a href={`/${category}/edit/${profileData._id}`} >Editar perfil</a></button>
+                                        <button id="delete" onClick={deleteItem} ><a>Eliminar perfil</a></button>
                                     </div>
                                     {category == 'users' ? 
                                         <div className={styles.botonCreate}>
                                             <button> <a href={`/pets/newpet`} >Añadir mascota</a></button>
                                         </div> : 
                                         <div className={styles.botonCreate}>
-                                            <button> <a href={`/${category}/adoption/${profileData._id}`} >Adopta</a></button> 
+                                            <button > <a href={`/${category}/adoption/${profileData._id}`} >Adopta</a></button> 
                                         </div>
                                     }
                                 </div>

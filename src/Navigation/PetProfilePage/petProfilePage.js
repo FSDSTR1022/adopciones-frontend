@@ -10,12 +10,14 @@ const PetProfilePage = () => {
     useEffect(() => {
         const getProfile = async () => {
             const petData = await fetch(`http://localhost:8000/pets/${id}`)
-            const profiles = await petData.json()
-            setProfile(profiles.petId)
-            console.log ('profile es: ', profiles.petId)
+            const profile = await petData.json()
+            setProfile(profile.petId)
+            console.log ('profile es: ', profile.petId)
         }
         getProfile()
     }, [])
+    console.log(profileData)
+    
     return(<>
             <Profile profileData={profileData} category='pets'></Profile>
         </>
