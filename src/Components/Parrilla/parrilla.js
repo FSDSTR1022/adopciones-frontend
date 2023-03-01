@@ -28,7 +28,7 @@ const Parrilla = ({allItems, category}) => {
             
             <div className={styles.parrilla}>
             {allItems.map((item)=>(<>
-                <div className={styles.fichaItem} key={item._id}>
+                <div className={styles.fichaItem} >
                     <div className={styles.fichaContent}>
                         <div className={styles.picture} >
                                 <Image key={item.picture} src={item.picture} alt='' borderRadius='lg'/>

@@ -25,13 +25,12 @@ function App() {
         <Header></Header>
         <Routes>
           <Route path='/' element={<HomePage/>}></Route>
-          <Route path='/pets' element={<PetsPage/>}></Route>
-          <Route path='/pets/:id' element={<PetProfilePage/>}></Route>
+          <Route path='/pets' element={<PetsPage/>}></Route> 
+          <Route path='/pets/:id' element={<PetProfilePage category='pets'/>}></Route>
           <Route path='/pets/adoption/:id' element={<AdoptionPage/>}></Route>
 
           <Route path='/pets/edit/:id' element={<EditionPage category='pets'/>}></Route>
           <Route path='/users/edit/:id' element={<EditionPage category='users'/>}></Route>
-
 
           <Route path='/pets/newpet' element={<NewPetPage/>}></Route>
           <Route path='/users' element={<UsersPage/>}></Route>

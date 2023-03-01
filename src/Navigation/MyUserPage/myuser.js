@@ -19,8 +19,8 @@ const MyUserPage = () => {
         const getProfile = async () => {
             const usersData = await fetch(`http://localhost:8000/users/${id}`)
             const profiles = await usersData.json()
-            setProfile(profiles.userId) 
-            console.log ('profile es: ', profiles.userId)
+            setProfile(profiles.userobj) 
+            console.log ('profile es: ', profiles.userobj)
         }
         getProfile()
     }, [])

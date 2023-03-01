@@ -3,10 +3,6 @@ import { Image } from '@chakra-ui/react'
 import styles from "./profile.module.css"
 import { useParams} from 'react-router-dom'
 
-
-
-
-
 const Profile = ({profileData, category}) => {
 
     const {id} = useParams()
@@ -20,10 +16,6 @@ const Profile = ({profileData, category}) => {
     })
     console.log('itemData: ', itemData)
 }
-
-
-
-
     return  <>  <div className={styles.petProfilePage}> 
                     <h2 >Mi perfil</h2> 
                     <div >
@@ -48,13 +40,15 @@ const Profile = ({profileData, category}) => {
                                 : null}
                                 
                                 {category == 'pets' ? <>
-                                    <h4 ><a>Edad</a>: {profileData.birthdate}</h4>
-                                    <h4 ><a>Género</a>: {profileData.gender}</h4>
-                                    <h4 ><a>Color</a>: {profileData.color}</h4>
-                                    <h4 ><a>Raza</a>: {profileData.breed}</h4>
-                                    <h4 ><a>Fecha de llegada</a>: {profileData.arrivalDate}</h4>
-                                    <h4 ><a>Estado</a>: {profileData.status}</h4>
-                                    <h4 ><a>Descripción</a>: {profileData.description}</h4>
+                                    <div className={styles.itemData}>
+                                        <h4 >Edad: {profileData == null ? <input defaultValue={profileData.birthdate} className={styles.editInput}/> : <a>{profileData.birthdate}</a>}</h4>
+                                        <h4 >Género:  <input defaultValue={profileData.gender} className={styles.editInput}/></h4>
+                                        <h4 >Color:  <input defaultValue={profileData.color} className={styles.editInput}/></h4>
+                                        <h4 > Raza: <input defaultValue={profileData.breed} className={styles.editInput}/></h4>
+                                        <h4 >Fecha de llegada: <input defaultValue={profileData.arrivalDate} className={styles.editInput}/></h4>
+                                        <h4 >Estado: <a>{profileData.status}</a></h4>
+                                        <h4 >Descripción: <input defaultValue={profileData.description} className={styles.editInput}/></h4>
+                                    </div>
                                     </>                                
                                 : null}
 
@@ -83,5 +77,3 @@ const Profile = ({profileData, category}) => {
             </>}
             
 export default Profile
-
-
