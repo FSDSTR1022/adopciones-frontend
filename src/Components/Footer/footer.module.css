@@ -42,12 +42,12 @@
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
 }
-#condiciones{
+.condiciones{
     display: flex;
     justify-content: space-between;
     width: 50%;
 }
-#condiciones a:hover{
+.condiciones a:hover{
     color: #ffc61b;
     text-decoration: underline;
     font-weight: bold;

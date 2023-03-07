@@ -1,12 +1,12 @@
 import React from "react";
 import { InputGroup, InputRightElement, Input, Button } from '@chakra-ui/react'
-import './passwordInput.css'
+import styles from './passwordInput.module.css'
 
 function PasswordInput() {
     const [show, setShow] = React.useState(false)
     const handleClick = () => setShow(!show)
   
-    return (<div className="passwordInput">
+    return (<div className={styles.passwordInput}>
       <InputGroup size='md' >
         <Input
             size='lg'

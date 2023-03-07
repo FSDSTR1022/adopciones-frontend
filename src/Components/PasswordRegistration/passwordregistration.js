@@ -1,13 +1,13 @@
 import React from "react";
-import './passwordregistration.css'
+import styles from './passwordregistration.module.css'
 import PasswordRegOnce from './PasswordRegOnce/passwordRegOnce'
 import PasswordRegRepeat from './PasswordRegRepeat/passwordRegRepeat'
 
 function PasswordRegistration() {
     return (
-        <div className="passwordReg1">
-        <PasswordRegOnce className="passwordReg2"></PasswordRegOnce>
-        <PasswordRegRepeat className="passwordReg2"></PasswordRegRepeat>
+        <div className={styles.passwordReg1}>
+        <PasswordRegOnce className={styles.passwordReg2}></PasswordRegOnce>
+        <PasswordRegRepeat className={styles.passwordReg2}></PasswordRegRepeat>
         </div>
     )
   }

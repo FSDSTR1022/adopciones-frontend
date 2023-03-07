@@ -1,16 +1,16 @@
 import React from "react";
 import { InputGroup, InputRightElement, Input, Button, Text } from '@chakra-ui/react'
-import './passwordRegRepeat.css'
+import styles from './passwordRegRepeat.module.css'
 
 function PasswordRegRepeat() {
     const [show, setShow] = React.useState(false)
     const handleClick = () => setShow(!show)
   
-    return (<div className="passwordgrupoRepeat">
+    return (<div className={styles.passwordgrupoRepeat}>
       <InputGroup size='md' >
-        <Text className="psswtextRepeat" color='#4f42e1' fontSize='1rem'fontWeight="bold" > Repita la contraseña: </Text>
+        <Text className={styles.psswtextRepeat} color='#4f42e1' fontSize='1rem'fontWeight="bold" > Repita la contraseña: </Text>
         <Input
-            className="psswInputRepeat"
+            className={styles.psswInputRepeat}
             size='lg'
             variant='filled' 
             pr='4.5rem'

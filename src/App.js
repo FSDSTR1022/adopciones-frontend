@@ -9,8 +9,6 @@ import RegistrationPage from './Navigation/RegistrationPage/registrationpage'
 import SuccessPage from './Navigation/SuccessPage/sucessPage'
 import AdoptionPage from './Navigation/AdoptionPage/adoptionPage'
 import ProfilePage from './Navigation/ProfilePage/profilePage'
-import SheltersPage from './Navigation/SheltersPage/sheltersPage'
-import ShelterProfilePage from './Navigation/ShelterProfilePage/shelterProfilePage'
 import UsersPage from './Navigation/UsersPage/usersPage.js'
 import NewPetPage from './Navigation/NewPetPage/newPetPage'
 import Header from './Components/Header/header'
@@ -42,8 +40,6 @@ function App() {
           <Route path='/passwordreset' element={<PasswordResetPage/>}></Route>
           <Route path='/success' element={<SuccessPage/>}></Route>
           {/* <Route path='/adoption' element={<AdoptionPage/>}></Route> */}
-          <Route path='/shelters' element={<SheltersPage/>}></Route>
-          <Route path='/shelters/:id' element={<ShelterProfilePage/>}></Route>
           {/* <Route path='/users/:id' element={<UsersProfilePage/>}></Route> */}
 
 

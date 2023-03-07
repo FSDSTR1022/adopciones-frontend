@@ -1,7 +1,7 @@
 import { Input, Button, ButtonGroup } from '@chakra-ui/react'
 import {React} from 'react'
 import {useForm} from 'react-hook-form'
-import {styles} from "./form.css"
+import styles from "./form.module.css"
 
 
 function Form(){
@@ -24,7 +24,7 @@ function Form(){
         <form onSubmit={handleSubmit(onSubmit)}>
                             <input {...register("userName", {required:true})}type='text' name='userName' placeholder='Nombre'></input>
                 {errors.userName && <span>Este campo es requerido</span>}
-                <button className='boton'>Registarme</button>
+                <button className={styles.boton}>Registarme</button>
         </form>
     )
 }

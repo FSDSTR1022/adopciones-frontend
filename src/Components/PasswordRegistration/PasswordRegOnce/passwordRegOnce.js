@@ -1,17 +1,17 @@
 import React from "react";
 import { InputGroup, InputRightElement, Input, Button, Text } from '@chakra-ui/react'
-import './passwordRegOnce.css'
+import styles from './passwordRegOnce.module.css'
 
 function PasswordRegOnce() {
     const [show, setShow] = React.useState(false)
     const handleClick = () => setShow(!show)
   
-    return (<div className="passwordgrupoOnce">
+    return (<div className={styles.passwordgrupoOnce}>
       <InputGroup size='md'>
-        <Text className="psswtextOnce" color='#4f42e1' fontSize='1rem'fontWeight="bold" > Contraseña: </Text>
+        <Text className={styles.psswtextOnce} color='#4f42e1' fontSize='1rem'fontWeight="bold" > Contraseña: </Text>
         <Input
             name='psswInputOnce'
-            className="psswInputOnce"
+            className={styles.psswInputOnce}
             size='lg'
             variant='filled' 
             pr='4.5rem'
