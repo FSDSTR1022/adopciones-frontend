@@ -1,5 +1,4 @@
 import React from "react";
-import { Image } from '@chakra-ui/react'
 import styles from "./profile.module.css"
 import { useParams} from 'react-router-dom'
 
@@ -14,40 +13,50 @@ const Profile = ({profileData, category}) => {
         headers:{'Content-Type': 'application/json',},
         body:JSON.stringify()
     })
-    console.log('itemData: ', itemData)
+    .then(itemRemoved => {console.log('message', itemRemoved.status)
+    if (itemRemoved.status != 'success') alert(itemRemoved.message)
+    })
+    .then(itemRemoved => {console.log('message', itemRemoved.message)
+        if (itemRemoved.status == 'success') alert(itemRemoved.message)
+        })
+
+    .catch((error) => console.log(error));
 }
-    return  <>  <div className={styles.petProfilePage}> 
-                    <h2 >Mi perfil</h2> 
+console.log('profiledata es: ',profileData)
+    return  <>  <div className={styles.profilePage}> 
+                    <h2 >Todo sobre <a className={styles.itemName}>{profileData.name}</a></h2> 
                     <div >
-                        <div className={styles.petProfileBlocks}>
+                        <div className={styles.profileBlocks}>
                             <div  className={styles.smallInfo}>
-                                <Image className={styles.picture} src={profileData.picture} alt='' borderRadius='lg'/>
-                                <div className={styles.smallestInfo}>
+                                <img className={styles.picture} src={profileData.picture} alt='' />
+                                {/* <div className={styles.smallestInfo}>
                                     <h3 >{profileData.name}</h3>
-                                </div>
+                                </div>  */}
                             </div>
                             <div className={styles.bigInfo}>
                                 <h3 >General Information</h3>
                                 {category == 'users' ? <>
-                                    <h4 ><a>Email</a>: {profileData.email}</h4>
-                                    <h4 ><a>Teléfono</a>: {profileData.phone}</h4>
-                                    <h4 ><a>Edad</a>: {profileData.birthdate}</h4>
-                                    <h4 ><a>Género</a>: {profileData.gender}</h4>
-                                    <h4 ><a>Tipo de documento</a>: {profileData.idType}</h4>
-                                    <h4 ><a>Número de documento</a>: {profileData.idNumber}</h4>
-                                    <h4 ><a>Descripción</a>: {profileData.description}</h4>
-                                    </>                                
+                                    <div className={styles.itemData}>
+                                        <h4>Email: <a>{profileData.email}</a></h4>
+                                        <h4>Teléfono: <a>{profileData.phone}</a></h4>
+                                        <h4>Edad: <a>{profileData.birthdate}</a></h4>
+                                        <h4>Género: <a>{profileData.gender}</a></h4>
+                                        <h4>Tipo de documento: <a>{profileData.idType}</a></h4>
+                                        <h4>Número de documento: <a>{profileData.idNumber}</a></h4>
+                                        <h4>Descripción: <a>{profileData.description}</a></h4>                                        
+                                    </div>
+                                        </>                                
                                 : null}
                                 
                                 {category == 'pets' ? <>
                                     <div className={styles.itemData}>
-                                        <h4 >Edad: {profileData == null ? <input defaultValue={profileData.birthdate} className={styles.editInput}/> : <a>{profileData.birthdate}</a>}</h4>
-                                        <h4 >Género:  <input defaultValue={profileData.gender} className={styles.editInput}/></h4>
-                                        <h4 >Color:  <input defaultValue={profileData.color} className={styles.editInput}/></h4>
-                                        <h4 > Raza: <input defaultValue={profileData.breed} className={styles.editInput}/></h4>
-                                        <h4 >Fecha de llegada: <input defaultValue={profileData.arrivalDate} className={styles.editInput}/></h4>
-                                        <h4 >Estado: <a>{profileData.status}</a></h4>
-                                        <h4 >Descripción: <input defaultValue={profileData.description} className={styles.editInput}/></h4>
+                                        <h4>Edad: <a>{profileData.birthdate}</a></h4>
+                                        <h4>Género: <a>{profileData.gender}</a></h4>
+                                        <h4>Color: <a>{profileData.color}</a></h4>
+                                        <h4>Raza: <a>{profileData.breed}</a></h4>
+                                        <h4>Fecha de llegada: <a>{profileData.arrivalDate}</a></h4>
+                                        <h4>Estado: <a>{profileData.status}</a></h4>
+                                        <h4>Descripción: <a>{profileData.description}</a></h4>  
                                     </div>
                                     </>                                
                                 : null}

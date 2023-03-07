@@ -9,10 +9,10 @@ const EditionPage = ({category}) => {
     
     useEffect(() => {
         const getProfile = async () => {
-            const itemData = await fetch(`http://localhost:8000/${category}/edit/${id}`)
+            const itemData = await fetch(`http://localhost:8000/${category}/${id}`)
             const profile = await itemData.json()
-            setProfile(profile.user.userUpdated)
-            console.log ('profile es: ', profile.user.userUpdated) 
+            setProfile(profile.itemObj)
+            console.log ('profile es: ', profile.itemObj) 
         }
         getProfile()
     }, [])

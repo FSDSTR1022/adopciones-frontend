@@ -2,21 +2,16 @@ import React, {useState} from "react";
 import style from "./registrationform.module.css"
 import PasswordRegistration from '../PasswordRegistration/passwordregistration'
 import { useForm } from "react-hook-form";
+import { redirect } from "react-router-dom";
 
-const RegistrationForm = ({profileData, category}) => {
-    console.log('profileData es', profileData)
-        //files 
+
+const RegistrationForm = ({category}) => {
         const [image, setImage] = useState()
         const [url, setUrl] = useState("")
-        
-        //form
         const {register, handleSubmit} = useForm()
-        
-        //files
         const upload = () => {
      }
     
-        //form
         async function handleRegistration (registroDatos) {
             const formdata = new FormData()
             formdata.append('file', image)
@@ -38,8 +33,12 @@ const RegistrationForm = ({profileData, category}) => {
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify({...registroDatos, picture:data.url}),
-                }).then(res => res = res.json())
-                .catch(error => console.log(error));
+                })
+                .then(res => res.json())
+                .then(info => {console.log('message', info)
+                    if (info.status != 'success') alert(info.message)
+                    })
+                .catch((error) => console.log(error));
             })}
         return(<><form 
                     onSubmit={handleSubmit(handleRegistration)}
@@ -55,7 +54,7 @@ const RegistrationForm = ({profileData, category}) => {
                             <div>
                                 <div className={style.dataEntry}>
                                     <h3 className={style.textos}>Nombre: </h3>
-                                    <input className={style.inputs} defaultValue={profileData.name} /*no me sirve para el form de editar y de nuevo item*/ placeholder='Introduzca el nombre'  name='name '{...register('name')}></input>
+                                    <input className={style.inputs} placeholder='Introduzca el nombre'  name='name '{...register('name')}></input>
                                 </div>                                
                                 <div className={style.dataEntry}>
                                     <h3 className={style.textos}>Tipo: </h3>
@@ -121,11 +120,11 @@ const RegistrationForm = ({profileData, category}) => {
                                     <h3 className={style.textos}>Teléfono: </h3>
                                     <input  className={style.inputs} placeholder='Introduzca número de telefono' {...register('phone')}></input>
                                 </div>
-                                <PasswordRegistration/>                       
                                 <div className={style.dataEntry}>
-                                    <h3 className={style.textos}>Fecha de nacimiento: </h3>
-                                    <input type='Date' className={style.inputs} {...register('birthdate')}></input>
+                                    <h3 className={style.textos}>Password: </h3>
+                                    <input type='password' className={style.inputs} placeholder='Introduzca contraseña' {...register('password')}></input>
                                 </div>
+                                {/* <PasswordRegistration {...register('password')}  />                        */}
                                 <div className={style.dataEntry}>
                                     <h3 className={style.textos}>Género: </h3>
                                     <select {...register('gender')} className={style.inputs}  >
@@ -147,6 +146,10 @@ const RegistrationForm = ({profileData, category}) => {
                                     <input  className={style.inputs} placeholder='Introduzca el número de documento' {...register('idNumber')}></input>
                                 </div>
                                 <div className={style.dataEntry}>
+                                    <h3 className={style.textos}>Dirección: </h3>
+                                    <input className={style.inputs} placeholder='Introduzca su dirección' {...register('address')}></input>
+                                </div>
+                                <div className={style.dataEntry}>
                                     <h3 className={style.textos}>Descripción: </h3>
                                     <input  className={style.inputs} placeholder='Introduzca la información' {...register('description')}></input>
                                 </div>
@@ -160,7 +163,8 @@ const RegistrationForm = ({profileData, category}) => {
                         <hr className={style.divider}></hr>
                         <div >
                             <div className={style.button}>
-                                <button onClick={upload}>Subir</button>
+                                <button onClick={upload} >Subir</button>
+                                
                             </div>
                         </div>
                     </div>

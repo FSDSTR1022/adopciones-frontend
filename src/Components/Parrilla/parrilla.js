@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from "react";
 import styles from "./parrilla.module.css"
-import { Image, } from '@chakra-ui/react'
 import { useParams } from "react-router-dom";
 
 
@@ -28,6 +27,36 @@ const Parrilla = ({allItems, category}) => {
             
             <div className={styles.parrilla}>
             {allItems.map((item)=>(<>
+                <div className={styles.fichaItem}>
+                    <div className={styles.fichaContent}>
+                        <img className={styles.picture} key={item.picture} src={item.picture} alt='' ></img>
+                        {category== 'pets' && item.type == "Perro" ? <h3 className={styles.emoji}>🐶</h3> : null}
+                        {category== 'pets' && item.type == "Gato" ? <h3 className={styles.emoji}>🐱</h3> : null}
+                    </div>
+                    <div className={styles.lowInfo}>
+                        <h3 className={styles.nombreItem}>{item.name}</h3>
+                        <button className={styles.boton} ><a href={`/${category}/${item._id}`}>Saber más</a></button>
+                    </div>
+                </div>
+
+                </>
+        ))} 
+        </div>
+        </>
+}
+
+export default Parrilla
+
+
+{/* <>
+                {category== 'users' ? 
+                    <div className={styles.preParrilla}>
+                        <h2 >Usuarios </h2> 
+                    </div> 
+                : null}
+            
+            <div className={styles.parrilla}>
+            {allItems.map((item)=>(<>
                 <div className={styles.fichaItem} >
                     <div className={styles.fichaContent}>
                         <div className={styles.picture} >
@@ -46,7 +75,4 @@ const Parrilla = ({allItems, category}) => {
                 </>
         ))} 
         </div>
-        </>
-}
-
-export default Parrilla
+        </> */}

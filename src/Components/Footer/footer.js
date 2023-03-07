@@ -17,7 +17,7 @@ const Footer = () => {
                 <h2>2023 © Una plataforma de AzulTeam</h2>
                 <div id="condiciones">
                     <h2><a href="/terms">Términos y condiciones de uso</a></h2>
-                    <h2><a href="/privacy">Política de Privacidad</a></h2>
+                    <h2><a href="/privacypolicy">Política de Privacidad</a></h2>
                     <h2><a href="/cookies">Cookies</a></h2>
                     <h2><a href="/faq">FAQ</a></h2>
                 </div>

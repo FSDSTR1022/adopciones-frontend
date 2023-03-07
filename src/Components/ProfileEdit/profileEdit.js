@@ -14,7 +14,7 @@ const ProfileEdit = ({profileData, category}) => {
      }
         async function handleRegistration (registroDatos) {
             const formdata = new FormData()
-            formdata.append('file', image)
+            formdata.append('file', image) 
             formdata.append('upload_preset', 'adopciones')
             formdata.append('cloud_name', 'dquuplk8z')
             console.log('registro de datos: ', registroDatos)
@@ -26,26 +26,27 @@ const ProfileEdit = ({profileData, category}) => {
             .then(data =>{
                 console.log('url', data)
                 setUrl(data.url)
-                fetch(`http://localhost:8000/${category}/edit/${id}`, {
+                fetch(`http://localhost:8000/${category}/${id}`, {
                     method:'PUT',
                     mode:'cors',
                     headers: {
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify({...registroDatos, picture:data.url}),
-                }).then(res => res = res.json())
+                })
+                .then(res => res = res.json())
+                .then(info => {console.log('message', info)
+                if (info.status != 'success') alert(info.message+' , '+info.details)
+                })   
                 .catch(error => console.log(error));
             })}
-    return  <>  <form className={styles.petProfilePage} onSubmit={handleSubmit(handleRegistration)}> 
-                    <h2 >Mi perfil</h2> 
+    return  <>  <form className={styles.profilePage} onSubmit={handleSubmit(handleRegistration)}> 
+                    <h2 >Todo sobre <input className={styles.itemName} defaultValue={profileData.name} {...register('name')} /></h2> 
                     <div >
-                        <div className={styles.petProfileBlocks}>
+                        <div className={styles.profileBlocks}>
                             <div  className={styles.smallInfo}>
-                                <Image className={styles.picture} src={profileData.picture} alt='' borderRadius='lg'/>
+                                <img className={styles.picture} src={profileData.picture} alt=''/>
                                     <input type='file' className={styles.inputs} onChange={(e)=>setImage(e.target.files[0])}></input>
-                                <div className={styles.smallestInfo}>
-                                    <h3 >{profileData.name}</h3>
-                                </div>
                             </div>
                             <div className={styles.bigInfo}>
                                 <h3 >General Information</h3>
@@ -54,7 +55,7 @@ const ProfileEdit = ({profileData, category}) => {
                                         <h4 >Email: <input defaultValue={profileData.email} {...register('email')} className={styles.editInput}/></h4>
                                         <h4 >Teléfono: <input defaultValue={profileData.phone} {...register('phone')} className={styles.editInput}/></h4>
                                         <h4 >Género: 
-                                        <select defaultValue={profileData.gender} {...register('gender')} className={styles.editInput}  >
+                                        <select selected={profileData.gender} {...register('gender')} className={styles.editInput}  >
                                             <option value='Otro'>Otro</option>
                                             <option value='Hombre'>Hombre</option>
                                             <option value='Mujer'>Mujer</option>
@@ -67,7 +68,7 @@ const ProfileEdit = ({profileData, category}) => {
                                         </select></h4>
                                         {/* <h4 ><a>Edad</a>: {profileData.birthdate}</h4> */}
                                         <h4 >Número de documento: <input defaultValue={profileData.idNumber} {...register('idNumber')} className={styles.editInput}/></h4>
-                                        <h4 >Descripción: <input defaultValue={profileData.description} {...register('description')} className={styles.editInput}/></h4>
+                                        <h4 >Descripción: <input defaultValue={profileData.description} {...register('description')} className={styles.editInputDescription}/></h4>
                                     </div>
                                     </>                                
                                 : null}
@@ -75,7 +76,6 @@ const ProfileEdit = ({profileData, category}) => {
                                 {category == 'pets' ? <>
                                     <div className={styles.itemData}>
                                         <h4 >Edad: <input defaultValue={profileData.birthdate} className={styles.editInput}/></h4>
-
                                         <h4 >Género: 
                                         <select defaultValue={profileData.gender} {...register('gender')} className={styles.editInput}  >
                                             <option value='Otro'>Otro</option>
@@ -83,11 +83,11 @@ const ProfileEdit = ({profileData, category}) => {
                                             <option value='Hembra'>Hembra</option>
                                         </select></h4>
                                         
-                                        <h4 >Color: <input defaultValue={profileData.color} className={styles.editInput}/></h4>
+                                        <h4 >Color: <input defaultValue={profileData.color} className={styles.editInput}{...register('color')}/></h4>
                                         <h4 >Raza: <input defaultValue={profileData.breed} className={styles.editInput} {...register('breed')}/></h4>
-                                        <h4 >Fecha de llegada: <input defaultValue={profileData.arrivalDate} className={styles.editInput}/></h4>
-                                        <h4 >Estado: <a>{profileData.status}</a></h4>
-                                        <h4 >Descripción: <input defaultValue={profileData.description} className={styles.editInput}/></h4>
+                                        <h4 >Fecha de llegada: <input type='date' defaultValue={profileData.arrivalDate} className={styles.editInput}/></h4>
+                                        <h4>Estado: <a>{profileData.status}</a></h4>
+                                        <h4 >Descripción: <input defaultValue={profileData.description} className={styles.editInputDescription}{...register('description')}/></h4>
                                     </div>
                                     </>                                
                                 : null}

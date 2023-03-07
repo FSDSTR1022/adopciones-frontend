@@ -9,7 +9,6 @@ const Menu = () => {
                             <li><a href="/">Home</a></li>
                             <li><a href="/pets">Mascotas</a></li>
                             <li><a href="/users">Usuarios</a></li>
-                            <li><a href="/shelters">Protectoras</a></li>
                         </ul>
                     </nav>
                 </div>

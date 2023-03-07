@@ -10,6 +10,7 @@ function PasswordRegOnce() {
       <InputGroup size='md'>
         <Text className="psswtextOnce" color='#4f42e1' fontSize='1rem'fontWeight="bold" > Contraseña: </Text>
         <Input
+            name='psswInputOnce'
             className="psswInputOnce"
             size='lg'
             variant='filled' 
