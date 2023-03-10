@@ -1,5 +1,6 @@
 import React from "react";
 import styles from './menu.module.css'
+import Button from '../Button/button'
 
 const Menu = () => {
     return <div className={styles.menuGeneral}> 
@@ -13,7 +14,7 @@ const Menu = () => {
                     </nav>
                 </div>
                 <div >
-                    <button className={styles.boton}><a href="/login">Log-in</a></button>
+                    <Button texto='Log-in' ruta='/login' span='button1'></Button>
                 </div>
 
             </div>

@@ -42,6 +42,10 @@
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
 }
+.footer2 a:hover{
+    color:#f23084;
+    font-weight: bold;
+}
 .condiciones{
     display: flex;
     justify-content: space-between;

@@ -1,5 +1,6 @@
 .formdelogin{
     margin-top: 10rem;
+    margin-bottom: 15rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -19,4 +20,7 @@
 }
 .pssChange h3{
     color: #231f20;
+}
+.foto{
+    height: 2rem;
 }

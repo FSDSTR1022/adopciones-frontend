@@ -1,10 +1,12 @@
 import React from "react";
 import styles from './filter.module.css'
+import Titulos from "../Titulos/titulos";
+import Button from "../Button/button";
 
 const ButtonList = ({allTypes, filterType}) => {
     return <>
         <div className={styles.filter}>
-            <h2 >Filtros</h2>
+            <Titulos texto='Filtros' span='h3'></Titulos>
          
             <div className={styles.types}>
                 {allTypes.map(type =>(

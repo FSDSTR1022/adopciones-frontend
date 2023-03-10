@@ -2,7 +2,6 @@ import React , {useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Parrilla from "../../Components/Parrilla/parrilla.js";
 import Filter from '../../Components/Filter/filter'
-import { clearConfigCache } from "prettier";
 
 const PetsPage = () => {
     const {slug} = useParams();
@@ -12,7 +11,6 @@ const PetsPage = () => {
         const getPet = async () => {
             const rawData = await fetch('http://localhost:8000/pets')
             const pets = await rawData.json()
-            console.log('esto es pets', pets)
             setPet(pets.pets)
             setFilteredItems(pets.pets)
         }

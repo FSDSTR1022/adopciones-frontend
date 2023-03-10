@@ -11,7 +11,6 @@ const UsersPage = () => {
         const getUsers = async () => {
             const rawData = await fetch('http://localhost:8000/users')
             const users = await rawData.json()
-            console.log('esto es users: ', users.users)
             setUsers(users.users)
         }
         getUsers()

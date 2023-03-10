@@ -3,8 +3,7 @@ import styles from "./footer.module.css"
 import logo from '../../../src/Resources/logoComplete.png'
 
 const Footer = () => {
-    return  <>
-        <div className={styles.footergeneral}>
+    return (<div className={styles.footergeneral}>
             <div className={styles.footer1}>
                 <div className={styles.filosofia}>
                     <h1>Encuentra a miles de animales en adopción</h1>
@@ -14,18 +13,16 @@ const Footer = () => {
                 <div className={styles.imagen}><a href="/"><img src={logo} alt="logo"/></a></div>
             </div>
             <div className={styles.footer2}>
-                <h2>2023 © Una plataforma de AzulTeam</h2>
+                <h2>2023 © Una plataforma de <a>Blue Team</a></h2>
                 <div className={styles.condiciones}>
                     <h2><a href="/terms">Términos y condiciones de uso</a></h2>
                     <h2><a href="/privacypolicy">Política de Privacidad</a></h2>
                     <h2><a href="/cookies">Cookies</a></h2>
                     <h2><a href="/faq">FAQ</a></h2>
-                </div>
+                </div> 
             </div>
 
         </div>
-
-        </>
-}
+)}
 
 export default Footer

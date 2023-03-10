@@ -18,13 +18,11 @@ return  <div className={styles.formdelogin}>
         <CardFooter display='flex' justifyContent='right'>
             <ButtonGroup spacing='20' >
                 <Button variant='solid' colorScheme='yellow' color='white' className={styles.botonficha} bg='#f23084' fontSize='xl' as={Link} to='/myuser' >Aplicar</Button>
+                <Button texto='Aplicar' span='button1'></Button>
             </ButtonGroup>
         </CardFooter>
         </Card>
-            </div>
-
-
-
+            </div> 
 }
 
 export default PasswordReset

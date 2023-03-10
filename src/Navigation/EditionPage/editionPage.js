@@ -12,15 +12,13 @@ const EditionPage = ({category}) => {
             const itemData = await fetch(`http://localhost:8000/${category}/${id}`)
             const profile = await itemData.json()
             setProfile(profile.itemObj)
-            console.log ('profile es: ', profile.itemObj) 
         }
         getProfile()
     }, [])
-    console.log('profileData en EditionPage: ', profileData)
     return(
         <>
             {category=='pets' ?  <ProfileEdit profileData={profileData} category='pets'></ProfileEdit> : null}
-            {category=='users' ?  <ProfileEdit profileData={profileData} category='users'></ProfileEdit> : null}
+            {category=='users' ?  <ProfileEdit profileData={profileData} category='users'></ProfileEdit> : null} 
         </>
     )
 }

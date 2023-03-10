@@ -3,16 +3,16 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: #4f42e1;
+    background: linear-gradient(70deg, #313981, #42b2da);
     margin-top: 5rem;
     width: 100%;
 }
 .contenedorFoto{
     width: 100%;
-    height: 22rem;
+    height: 28rem;
 }
 .foto{
-    width: 80rem;
+    width: 90rem;
     object-fit: cover;
     width:100%;
     height:100%;
@@ -20,7 +20,6 @@
 }
 .disclosure{
     margin: 2rem;
-    background-color: #4f42e1;
     color: #bcb9db;
     display: flex;
     flex-direction: column;

@@ -16,7 +16,6 @@
     font-size: 1.0rem;
     display: flex;
 }
-
 input::placeholder{
     font-family: 'Jaldi';
     font-size:1rem;
@@ -45,14 +44,17 @@ input::placeholder{
     gap: 2rem;
     margin: 0.5rem;
 }
-.textos{
-}
 .inputs{
     width: 20rem;
     background-color: #edf2f7;
     border-radius: 10px;
     height: 3rem;
-    padding: 1rem;
+    padding: 1rem;    
+}
+.inputs:focus{
+    border: 1px solid #bcb9db;
+    outline: none;
+    box-shadow: 2px 0px 30px rgba(163, 163, 163, 0.3);
 }
 .inputsBig{
     width: 20rem;
@@ -91,3 +93,10 @@ hr.divider {
     display: flex;
     margin: 1rem;
   }
+.leyendaError{
+    font-size: 0.3rem;
+    margin-bottom: 0;
+    color: #f23084;
+    /* display: none; */
+    
+}

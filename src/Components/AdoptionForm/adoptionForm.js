@@ -1,11 +1,23 @@
 import React, {useState} from "react";
 import styles from "./adoptionForm.module.css"
 import { useForm } from "react-hook-form";
+import Button from "../Button/button";
+import Titulos from "../Titulos/titulos";
 
 const AdoptionForm = ({profileData, category}) => {
-    const { register, handleSubmit } = useForm();
+    const { register, handleSubmit, errors } = useForm();
     const onSubmit = data => handleRegistration(data);
-    console.log(profileData)
+
+    let dateTime = () => {
+        let showDate = new Date();
+        let displaytodaysdate = showDate.getDate()+'/'+'0'+showDate.getMonth()+'/'+showDate.getFullYear()
+        return displaytodaysdate
+    }
+
+
+    console.log('fecha', dateTime())
+        
+
     async function handleRegistration(registroDatos) {
         fetch(`http://localhost:8000/${category}`, {
             method:'POST',
@@ -16,13 +28,21 @@ const AdoptionForm = ({profileData, category}) => {
             body: JSON.stringify({...registroDatos}),
         })
         .then(res => res = res.json())
+        .then(newItem => {
+            if (newItem.status === 'success') {
+                alert(newItem.message)
+                window.location.href = `/${category}/${newItem.userobj._id}`
+            }                    
+            else alert(newItem.message)    
+        })
         .catch(error => console.log(error));
     }
+
     return (
       <form 
         onSubmit={handleSubmit(onSubmit)}
         className={styles.formularioRegistro}>
-            <h2>Solicitud de adopción</h2>
+            <Titulos texto='Solicitud de adopción' span='h2'></Titulos>
             <div className={styles.datosform}>
                 <div>
                     <div className={styles.dataEntry}>
@@ -34,8 +54,8 @@ const AdoptionForm = ({profileData, category}) => {
                         <input className={styles.inputs} placeholder='nombre del usuario' name='name '></input>
                     </div>
                     <div className={styles.dataEntry}>
-                        <h3 className={styles.textos}>Fecha de soclicitud: </h3>
-                        <input type='date' placeholder='Introduzca su respuesta' className={styles.inputs} {...register('date')}></input>
+                        <h3 className={styles.textos}>Fecha de solicitud: </h3>
+                        <input type='date' defaultValue={dateTime()} placeholder='Introduzca su respuesta' className={styles.inputs} {...register('date')}></input>
                     </div>
                     <div className={styles.dataEntry}>
                         <h3 className={styles.textos}>Pregunta 1: </h3>
@@ -60,9 +80,9 @@ const AdoptionForm = ({profileData, category}) => {
                 </div>
                 <hr className={styles.divider}></hr>
                 <div >
-                    <div className={styles.button}>
-                    <button type="submit">Solicitar adopción</button>
-                    </div>
+                    
+                    <Button texto='Solicitar adopción' span='button3'></Button>
+                    
                 </div>
             </div>
       </form>

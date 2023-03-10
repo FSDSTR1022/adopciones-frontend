@@ -25,14 +25,6 @@
     font-size: 1.0rem;
     display: flex;
 }
-.bigInfo a{
-    font-family: 'Jaldi';
-    color: black;
-    font-size: 1.0rem; 
-    margin-left: 0.5rem;
-    padding-left: 0.2rem;
-    width: auto;
-}
 .profileBlocks{
     display: flex;
     justify-content: space-around;
@@ -79,6 +71,7 @@ hr.divider {
 .botonTotal{
     display: flex;
     flex-direction: column;
+    align-items: center;
     align-self: center;
     font-family: 'Jaldi';
     font-size: 1.2rem;
@@ -136,6 +129,8 @@ button a{
     color: black;
     font-size: 1.0rem;
     font-weight: lighter;
+    margin-left: 0.5rem;
+    padding-left: 0.2rem;
 }
 .editInput{
     margin-left: 0.5rem;

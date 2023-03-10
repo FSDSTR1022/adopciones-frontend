@@ -1,21 +1,26 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import { useParams } from "react-router-dom";
-import Tittle from '../../Components/Tittle/tittle.js'
-import Menu from '../../Components/Menu/menu'
 import LoginForm from '../../Components/LoginForm/loginform'
-import Footer from "../../Components/Footer/footer.js";
 
+const LoginPage = ({category}) => {
+    const {slug} = useParams(); 
+    const [allItems, setUsers] = useState([]);
 
-const LoginPage = () => {
-    const {slug} = useParams();
+    useEffect(() => {
+        const getUsers = async () => {
+            const rawData = await fetch('http://localhost:8000/users')
+            const users = await rawData.json()
+            setUsers(users.users)
+        }
+        getUsers()
+    }, [])
+
+    console.log('user', allItems)
 
     return(
-        <>
+            <>
+                <LoginForm allItems={allItems} ></LoginForm>
+            </>
+    )}
 
-            <LoginForm></LoginForm>
-
-        </>
-    )
-}
-
-export default LoginPage
+export default LoginPage 
