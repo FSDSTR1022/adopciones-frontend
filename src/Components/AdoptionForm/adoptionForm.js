@@ -10,7 +10,7 @@ const AdoptionForm = ({profileData, category}) => {
 
     let dateTime = () => {
         let showDate = new Date();
-        let displaytodaysdate = showDate.getDate()+'/'+'0'+showDate.getMonth()+'/'+showDate.getFullYear()
+        let displaytodaysdate = showDate.getFullYear()+'-'+'0'+showDate.getMonth()+'-'+showDate.getDate()
         return displaytodaysdate
     }
 

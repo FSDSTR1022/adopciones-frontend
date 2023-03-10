@@ -138,13 +138,16 @@ const RegistrationForm = ({category, profileData}) => {
                                 </div>
 
 
-
-        {/* <h3 className={style.textos}>Contraseña: </h3>
-        <input className={style.inputs} placeholder='Introduzca contraseña' name="password" type="password" ref={register({required: "You must specify a password", minLength: {value: 8, message: "Password must have at least 8 characters"}})} />
+{/* 
+        <h3 className={style.textos}>Contraseña: </h3>
+        <input className={style.inputs} placeholder='Introduzca contraseña' name="password" type="password" 
+        ref={register({required: "You must specify a password", 
+        minLength: {value: 8, message: "Password must have at least 8 characters"}})} />
         {errors.password && <p>{errors.password.message}</p>}
   
         <h3 className={style.textos}>Repita contraseña: </h3>
-        <input className={style.inputs} placeholder='Introduzca contraseña' name="password_repeat" type="password" ref={register({validate: value => value === password.current || "The passwords do not match"})}/>
+        <input className={style.inputs} placeholder='Introduzca contraseña' name="password_repeat" type="password" 
+        ref={register({validate: value => value === password.current || "The passwords do not match"})}/>
         {errors.password_repeat && <p>{errors.password_repeat.message}</p>} */}
 
 

@@ -32,10 +32,7 @@ const Profile = ({profileData, category}) => {
                 window.location.href = `/${category}`
             }                    
             else alert(itemRemoved.message)
-
-        }) 
-
-
+        })
         .catch((error) => console.log(error));
     }
     return  <>  <div className={styles.profilePage}> 
