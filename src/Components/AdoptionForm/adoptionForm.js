@@ -10,10 +10,9 @@ const AdoptionForm = ({profileData, category}) => {
 
     let dateTime = () => {
         let showDate = new Date();
-        let displaytodaysdate = showDate.getFullYear()+'-'+'0'+showDate.getMonth()+'-'+showDate.getDate()
+        let displaytodaysdate = showDate.getFullYear()+'-'+'0'+('0' + (showDate.getMonth())).slice(-2) +'-'+('0' + showDate.getDate()).slice(-2) 
         return displaytodaysdate
     }
-
 
     console.log('fecha', dateTime())
         

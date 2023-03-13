@@ -58,8 +58,8 @@ const ProfileEdit = ({profileData, category}) => {
                                     <div className={styles.itemData}>
                                         <h4 >Email: <input defaultValue={profileData.email} {...register('email')} className={styles.editInput}/></h4>
                                         <h4 >Teléfono: <input defaultValue={profileData.phone} {...register('phone')} className={styles.editInput}/></h4>
-                                        <h4 >Género: 
-                                        <select value={profileData.gender} {...register('gender')} className={styles.editInput}  >
+                                        <h4 >Género: {profileData.gender}
+                                        <select defaultValue={profileData.gender} {...register('gender')} className={styles.editInput}  >
                                             <option value='Otro'>Otro</option>
                                             <option value='Hombre'>Hombre</option>
                                             <option value='Mujer'>Mujer</option>

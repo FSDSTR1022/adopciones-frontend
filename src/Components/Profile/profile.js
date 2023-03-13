@@ -25,6 +25,7 @@ const Profile = ({profileData, category}) => {
         headers:{'Content-Type': 'application/json',},
         body:JSON.stringify()
         })
+        console.log('me han pulsado')
         .then(res => res.json())
         .then(itemRemoved => {
             if (itemRemoved.status === 'success') {
@@ -75,9 +76,8 @@ const Profile = ({profileData, category}) => {
                                 <div className={styles.botonTotal}>
                                     <div className={styles.botonOpciones}>
                                         {category == 'users' ? <Button texto='Cambiar Contraseña' ruta={`/${category}/passwordreset/${profileData._id}`} span='button4'></Button> : null}
-                                        <button id="delete" onClick={deleteItem} ><a>Eliminar perfil</a></button>
                                         <Button texto='Editar perfil' ruta={`/${category}/edit/${profileData._id}`} span='button4'></Button>
-                                        <Button id="delete" onClick={deleteItem} texto='Eliminar perfil' span='button4' ></Button>
+                                        <button id="delete" onClick={deleteItem} ><a>Eliminar perfil</a></button>
 
                                     </div>
                                     {category == 'users' ? 

@@ -8,7 +8,7 @@
 .preParrilla h2{
     font-family: 'Jaldi';
     font-weight: bold;
-    color: #4f42e1;
+    color: #313981;
     font-size: 2.5rem;
 }
 .parrilla{
@@ -47,7 +47,7 @@
     display: flex;
     justify-content: center;
     font-family: 'Jaldi';
-    color: #4f42e1;
+    color: #313981;
     font-weight: bold;
     font-size: 1.7rem;
 }

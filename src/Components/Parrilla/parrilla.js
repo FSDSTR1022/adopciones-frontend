@@ -18,20 +18,6 @@ const Parrilla = ({allItems, category}) => {
         }
         getPet()
     }, [])
-    // console.log('items', items.pets)
-
-    // const [filteredItems, setFilteredItem] = useState([items])
-
-    // const filterByStatus = status => {
-    //     setFilteredItem(
-    //         items.pets.filter(filteredItem => filteredItem.pets.status === "En adopcion")
-            
-    //   )
-    // }
-    // const status = Array.from(
-    //   new Set(items.map(items => items.status))
-    // )
-    // console.log('filteredItems', filteredItems)
 
     return  <>
                 {category== 'users' ? 
