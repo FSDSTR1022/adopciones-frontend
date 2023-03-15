@@ -4,7 +4,7 @@ import { useParams} from 'react-router-dom'
 import Button from "../Button/button";
 import Titulos from "../Titulos/titulos";
 
-const Profile = ({profileData, category}) => {
+const Profile = ({profileData={}, category}) => {
 
     const {id} = useParams()
 
@@ -14,7 +14,7 @@ const Profile = ({profileData, category}) => {
         let itemAge = today.getFullYear() - birthDate.getFullYear(); 
         const m = today.getMonth() - birthDate.getMonth(); 
         if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) { itemAge--; 
-        } 
+        }
         return itemAge;
         }
 
@@ -25,7 +25,6 @@ const Profile = ({profileData, category}) => {
         headers:{'Content-Type': 'application/json',},
         body:JSON.stringify()
         })
-        console.log('me han pulsado')
         .then(res => res.json())
         .then(itemRemoved => {
             if (itemRemoved.status === 'success') {
@@ -75,9 +74,10 @@ const Profile = ({profileData, category}) => {
 
                                 <div className={styles.botonTotal}>
                                     <div className={styles.botonOpciones}>
-                                        {category == 'users' ? <Button texto='Cambiar Contraseña' ruta={`/${category}/passwordreset/${profileData._id}`} span='button4'></Button> : null}
+                                        {/* {category == 'users' ? <Button texto='Cambiar Contraseña' ruta={`/${category}/passwordreset/${profileData._id}`} span='button4'></Button> : null} */}
                                         <Button texto='Editar perfil' ruta={`/${category}/edit/${profileData._id}`} span='button4'></Button>
                                         <button id="delete" onClick={deleteItem} ><a>Eliminar perfil</a></button>
+                                        <Button texto='Atrás' ruta={`/${category}`} span='button4'></Button>
 
                                     </div>
                                     {category == 'users' ? 

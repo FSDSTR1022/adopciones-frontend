@@ -1,17 +1,20 @@
-import React from "react";
+import React , {useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import styles from "./success.module.css"
-import {Link} from 'react-router-dom'
-import {ButtonGroup, Button} from '@chakra-ui/react'
+import Button from "../Button/button";
 
-const Success = () => {
+const Success = ({profileData, category}) => {
+    const {slug} = useParams(); 
+    const {id} = useParams()
+
     return  <>
         <div className={styles.exito}>
             <div className={styles.titulo}>
                 <h1>😻 Se ha completado su registro 😻</h1>
             </div>
-            <ButtonGroup spacing='2' paddingRight={8} paddingBottom={0}>
-                <Button className={styles.botonmenuExito} variant='solid' colorScheme='yellow' color='white' bg='#f23084' href='Login' height='2.2rem' w='7rem' as={Link} to='/myuser' > Ver mi perfil</Button>
-            </ButtonGroup>
+            <Button texto='Ver mi perfil' span='button4' ruta={`/${category}/${id}`}></Button>
+            <hr className={styles.divider}></hr>
+            <Button texto='Encontrar mi mascota' span='button5' ruta={`/pets`}></Button>
         </div>
     </>
 }

@@ -2,7 +2,6 @@ import React, {useState, useEffect} from "react";
 import styles from "./parrilla.module.css"
 import { useParams } from "react-router-dom";
 import Button from "../Button/button";
-import Titulos from "../Titulos/titulos";
 
 const Parrilla = ({allItems, category}) => { 
 
@@ -10,11 +9,21 @@ const Parrilla = ({allItems, category}) => {
     const [items, setItem] = useState([]);
     
     useEffect(() => {
+        let url = `http://localhost:8000/${category}`;
+        url = category === 'pets' ? (url+`?status=EN_ADOPCION`) : url 
+        console.log('url', url)
+
         const getPet = async () => {
-            const rawData = await fetch('http://localhost:8000/pets')
+            const rawData = await fetch(url, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${localStorage.getItem('token')}`
+                },
+            })
+            console.log('autorizacion', localStorage)
             const items = await rawData.json()
-            setItem(items)
-            console.log(items.pets)
+            setItem(items.items)
+            console.log('items', items)
         }
         getPet()
     }, [])
@@ -27,7 +36,7 @@ const Parrilla = ({allItems, category}) => {
                 : null}
             
             <div className={styles.parrilla}>
-            {allItems.map((item)=>(
+            {items.map((item)=>(
                 <div className={styles.fichaItem} key={item._id}>
                     <div className={styles.fichaContent}>
                         <img className={styles.picture} key={item.picture} src={item.picture} alt='' ></img>
@@ -36,7 +45,6 @@ const Parrilla = ({allItems, category}) => {
                     </div>
                     <div className={styles.lowInfo}>
                         <h3 className={styles.nombreItem} key={item.name} >{item.name}</h3>
-                        <Titulos /*texto={`${key={item.type}}`}*/ span='h4'></Titulos>
                         <Button texto='Saber más' ruta={`/${category}/${item._id}`} span='button1'></Button>
                     </div>
                 </div>

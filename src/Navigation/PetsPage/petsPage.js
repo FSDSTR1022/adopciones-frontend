@@ -3,16 +3,16 @@ import { useParams } from "react-router-dom";
 import Parrilla from "../../Components/Parrilla/parrilla.js";
 import Filter from '../../Components/Filter/filter'
 
-const PetsPage = () => {
+const PetsPage = ({category}) => {
     const {slug} = useParams();
     const [allItems, setPet] = useState([]);
     const [filteredItems, setFilteredItems] = useState([]) 
     useEffect(() => {
         const getPet = async () => {
-            const rawData = await fetch('http://localhost:8000/pets')
+            const rawData = await fetch(`http://localhost:8000/${category}`)
             const pets = await rawData.json()
-            setPet(pets.pets)
-            setFilteredItems(pets.pets)
+            setPet(pets.items)
+            setFilteredItems(pets.items)
         }
         getPet()
     }, [])

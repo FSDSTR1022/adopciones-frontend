@@ -1,24 +1,53 @@
-import React from "react";
+import React, {useState, useEffect, useRef} from "react";
 import styles from "./loginform.module.css"
-import PasswordInput from '../PasswordInput/passwordInput'
-import {Link} from 'react-router-dom'
+import { useForm } from "react-hook-form";
 import Titulos from "../Titulos/titulos";
 import Button from "../Button/button";
 
-const LoginForm = () => {
-   
+const LoginForm = ({category, allItems}) => {
+const { register, errors, handleSubmit } = useForm({});
+async function handleRegistration (registroDatos) {
+        fetch(`http://localhost:8000/login`, {
+            method:'POST',
+            mode:'cors',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({...registroDatos}),
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log('respuesta', data)
+            localStorage.setItem('token', data.Token)
+           if (data.status === 'Success') {
+            alert(data.message)
+            window.location.href = `/pets`
+           }
+           else alert(data.message + ': ' + data.details)
+        })
+        .catch((error) => console.log(error));
+    }
+
 return  <>
-        <div className={styles.formdelogin}>
+        <div className={styles.formdelogin} >
             <Titulos texto ='Log-in' span='h2'></Titulos>
-            <div className={styles.credentialBox}>
-                <input className={styles.credentialInput} placeholder='Introduce tu email'></input>
-                <input className={styles.credentialInput} placeholder='Introduce tu contraseña' type='password'></input>
+            <div className={styles.loginBox}>
+                <form className={styles.credentialBox} onSubmit={handleSubmit(handleRegistration)}>
+                    <input {...register('email')} className={styles.credentialInput} placeholder='Introduce tu email' autoComplete="off"></input>
+                    <input {...register('password')} className={styles.credentialInput} placeholder='Introduce tu contraseña' type='password' autoComplete="off"></input>
+                    <Button span='button3' texto='Entrar' ></Button>
+                    <hr className={styles.divider}></hr>
+                </form> 
                 <div className={styles.buttonBox}>
-                    <Titulos texto='¿No eres usuario?' span='h5'></Titulos>
-                    <Button span='button3' texto='Regístrate aquí' ruta='/users/newuser'></Button>
-                </div>                
-            </div>            
+                        <Titulos texto='¿No eres usuario?' span='h5'></Titulos>
+                        <Button span='button3' texto='Regístrate aquí' ruta='/users/newuser'></Button>
+                </div>  
+            </div>
+            
         </div>
+                              
+                       
+        
         <div>    
             <img src='https://media.tenor.com/1Qah7X4zx3oAAAAi/neon-cat-rainbow.gif' alt='' className={styles.foto}/>
         </div>
@@ -26,22 +55,3 @@ return  <>
 }
 
 export default LoginForm
-
-
-{/* <Card maxW='sm' className={styles.fichalogin} fontFamily='Jaldi' variant='outline'>
-            <CardBody display="flex" alignItems="center" flexDirection='column' justifyContent="center">
-                <Input size='lg' variant='filled' placeholder='Introduce tu email' _placeholder={{ color: '#bcb9db' }}/> 
-                <PasswordInput></PasswordInput>
-            </CardBody>
-            <div className={styles.pssChange}>
-                {/* <Text color='#4f42e1' fontSize='md' > ¿Olvidaste la contraseña? </Text>
-                <h2> <a href='/passwordreset'>Cambiar contraseña</a></h2> */}
-           {/* </div>
-            <CardFooter display='flex' textAlign='center' justifyContent='space-around'>
-                <ButtonGroup spacing='20' >
-                    <Text color='#4f42e1' fontSize='md' > ¿No eres usuario? </Text>
-                    <Button variant='solid' colorScheme='yellow' color='white' className={styles.botonficha} bg='#f23084' fontSize='xl' as={Link} to='/users/newuser'>Regístrate Aquí</Button>
-                </ButtonGroup>
-            </CardFooter>
-            </Card>
-             */}

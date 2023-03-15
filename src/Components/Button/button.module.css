@@ -62,3 +62,21 @@
     color: #f23084;
     text-decoration: underline;
 }
+.button5{
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    align-items: center;
+    background-color: #f23084;
+    color: white;
+    font-family: 'Jaldi';
+    font-weight: bold;
+    font-size: 1.5rem;
+    padding: 0.4rem;
+    width: 14rem;
+    border-radius: 8px;
+    margin: 0.5rem
+}
+.button5:hover{
+    background-color: #ffc61b;
+}

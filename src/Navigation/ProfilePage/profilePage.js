@@ -15,12 +15,11 @@ const ProfilePage = ({category}) => {
         }
         getProfile()
     }, [])
-    console.log('profile', profileData)
 
     return(
             <>
-                {category=='pets' ?  <Profile profileData={profileData}  category='pets'></Profile> : null}
-                {category=='users' ?  <Profile profileData={profileData}  category='users'></Profile> : null}
+                {category ==='pets' ?  <Profile profileData={profileData}  category='pets'></Profile> : null}
+                {category ==='users' ?  <Profile profileData={profileData}  category='users'></Profile> : null}
             </>
     )}
 

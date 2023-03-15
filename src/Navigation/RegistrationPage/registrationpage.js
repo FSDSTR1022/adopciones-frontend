@@ -15,6 +15,7 @@ const RegistrationPage = ({category, category2}) => {
         }
         getProfile()
     }, [])
+    
     return(<>
             {category2 === 'password' ? <RegistrationForm category={'password'} profileData={profileData}></RegistrationForm> : null }
             {category === 'users' ? <RegistrationForm category={'users'}></RegistrationForm> : null }

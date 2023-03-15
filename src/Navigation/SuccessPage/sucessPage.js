@@ -1,18 +1,25 @@
-import React from "react";
+import React , {useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import Tittle from '../../Components/Tittle/tittle.js'
-import Menu from '../../Components/Menu/menu'
 import Success from '../../Components/Success/success'
-import Footer from "../../Components/Footer/footer.js";
 
-
-const SuccessPage = () => {
-    const {slug} = useParams();
+const SuccessPage = ({category}) => {
+    const {slug} = useParams(); 
+    const [profileData, setProfile] = useState({})
+    const {id} = useParams()
+    
+    useEffect(() => {
+        const getProfile = async () => {
+            const itemData = await fetch(`http://localhost:8000/${category}/${id}`)
+            const profile = await itemData.json()
+            setProfile(profile.itemObj)
+        }
+        getProfile()
+    }, [])
 
     return(
         <>
 
-            <Success></Success>
+            <Success profileData={profileData} category='users'></Success>
 
         </>
     )

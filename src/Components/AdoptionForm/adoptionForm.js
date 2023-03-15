@@ -7,15 +7,16 @@ import Titulos from "../Titulos/titulos";
 const AdoptionForm = ({profileData, category}) => {
     const { register, handleSubmit, errors } = useForm();
     const onSubmit = data => handleRegistration(data);
-
+    console.log('profileData', profileData)
     let dateTime = () => {
         let showDate = new Date();
-        let displaytodaysdate = showDate.getFullYear()+'-'+'0'+('0' + (showDate.getMonth())).slice(-2) +'-'+('0' + showDate.getDate()).slice(-2) 
+        let displaytodaysdate = showDate.getFullYear()+'-'
+                                +('0' + (showDate.getMonth())).slice(-2) +'-'
+                                +('0' + showDate.getDate()).slice(-2) 
         return displaytodaysdate
     }
 
-    console.log('fecha', dateTime())
-        
+     
 
     async function handleRegistration(registroDatos) {
         fetch(`http://localhost:8000/${category}`, {
@@ -23,8 +24,9 @@ const AdoptionForm = ({profileData, category}) => {
             mode:'cors',
             headers: {
                 'Content-Type': 'application/json',
+                Authorization: `Bearer ${localStorage.getItem('token')}`
             },
-            body: JSON.stringify({...registroDatos}),
+            body: JSON.stringify({...registroDatos, petID:profileData._id}),
         })
         .then(res => res = res.json())
         .then(newItem => {

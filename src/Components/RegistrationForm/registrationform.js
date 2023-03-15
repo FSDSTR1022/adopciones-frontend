@@ -1,29 +1,43 @@
 import React, {useState, useRef} from "react";
 import style from "./registrationform.module.css"
-import PasswordRegistration from '../PasswordRegistration/passwordregistration'
 import { useForm } from "react-hook-form";
 import Button from "../Button/button";
+import passwordValidation from './passwordValidation'
 
 const RegistrationForm = ({category, profileData}) => {
         const [image, setImage] = useState()
         const [url, setUrl] = useState("")
-        const { register, errors, handleSubmit, watch } = useForm({});
+        const { register, handleSubmit, watch } = useForm({});
         const upload = () => {
      }
-
-        const password = useRef({});
-        password.current = watch("password", "");
-        const onSubmit = async data => {
-        alert(JSON.stringify(data));
-        };
-   
-
+        const [values, setValues] = useState({
+            password: '',
+            confirm_password: ''
+        })
+        const [errors, setErrors] = useState({})
+        const handleInput = (e) => {
+            if(e.target.name === 'password'){
+                console.log('values ', values)
+                const error = passwordValidation(e.target.value, values.confirm_password)
+                console.log('eeror', error)
+                setErrors(error)
+            } 
+            if(e.target.name === 'confirm_password'){
+                const error = passwordValidation(values.password, e.target.value)
+                setErrors(error)
+            }
+            setValues({...values, [e.target.name] : e.target.value})
+        }
         async function handleRegistration (registroDatos) {
+            if(errors.password || errors.confirm_password){
+                return
+            }
             const formdata = new FormData()
             formdata.append('file', image)
             formdata.append('upload_preset', 'adopciones')
             formdata.append('cloud_name', 'dquuplk8z')
-        
+            setErrors(passwordValidation(values))
+
             fetch('https://api.cloudinary.com/v1_1/dquuplk8z/image/upload',{ 
                 method: 'post',
                 body: formdata
@@ -36,6 +50,7 @@ const RegistrationForm = ({category, profileData}) => {
                     mode:'cors',
                     headers: {
                         'Content-Type': 'application/json',
+                        Authorization: `Bearer ${localStorage.getItem('token')}`
                     },
                     body: JSON.stringify({...registroDatos, picture:data.url}),
                 })
@@ -43,9 +58,9 @@ const RegistrationForm = ({category, profileData}) => {
                 .then(newItem => {
                     if (newItem.status === 'success') {
                         alert(newItem.message)
-                        window.location.href = `/${category}/${newItem.userobj._id}`
+                        window.location.href = `/success/${newItem.userobj._id}`
                     }                    
-                    else alert(newItem.message)    
+                    else alert(newItem.message + ':' + newItem.details)    
                 })
                 .catch((error) => console.log(error));
             })}
@@ -59,11 +74,11 @@ const RegistrationForm = ({category, profileData}) => {
                     
                     <div className={style.datosform}>
                         
-                        {category=='pets' ?  
+                        {category === 'pets' ?  
                             <div>
                                 <div className={style.dataEntry}>
                                     <h3 className={style.textos}>Nombre: </h3>
-                                    <input className={style.inputs} placeholder='Introduzca el nombre'  name='name '{...register('name')}></input>
+                                    <input className={style.inputs} placeholder='Introduzca el nombre'  name='name '{...register('name')} autoComplete='off'></input>
                                 </div>
                                 <div className={style.dataEntry}>
                                     <h3 className={style.textos}>Tipo: </h3>
@@ -90,11 +105,11 @@ const RegistrationForm = ({category, profileData}) => {
                                 </div>
                                 <div className={style.dataEntry}>
                                     <h3 className={style.textos}>Color: </h3>
-                                    <input  className={style.inputs} placeholder='Introduzca un color' {...register('color')}></input>
+                                    <input  className={style.inputs} placeholder='Introduzca un color' {...register('color')}autoComplete='off'></input>
                                 </div>
                                 <div className={style.dataEntry}>
                                     <h3 className={style.textos}>Raza: </h3>
-                                    <input  className={style.inputs} placeholder='Introduzca una raza' {...register('breed')}></input>
+                                    <input  className={style.inputs} placeholder='Introduzca una raza' {...register('breed')}autoComplete='off'></input>
                                 </div>
                                 <div className={style.dataEntry}>
                                     <h3 className={style.textos}>Fecha de llegada: </h3>
@@ -115,46 +130,46 @@ const RegistrationForm = ({category, profileData}) => {
                             <div>
                                 <div className={style.dataEntry}>
                                     <h3 className={style.textos}>Nombre: </h3>
-                                    <input className={style.inputs} placeholder='Introduzca el nombre' name='name '{...register('name')}></input>
+                                    <input className={style.inputs} placeholder='Introduzca el nombre' name='name '{...register('name')}autoComplete='off'></input>
                                 </div>  
                                 <div className={style.dataEntry}>
                                     <h3 className={style.textos}>Email: </h3>
-                                    <input className={style.inputs} placeholder='Introduzca el email' name='email '{...register('email')}></input>
+                                    <input className={style.inputs} placeholder='Introduzca el email' name='email '{...register('email')}autoComplete='off'></input>
                                 </div>
                                 <div className={style.dataEntry}>
                                     <h3 className={style.textos}>Teléfono: </h3>
-                                    <input  className={style.inputs} placeholder='Introduzca número de telefono' {...register('phone')}></input>
+                                    <input  className={style.inputs} placeholder='Introduzca número de telefono' {...register('phone')}autoComplete='off'></input>
                                 </div>
-
-
-
                                 <div className={style.dataEntry}>
                                     <h3 className={style.textos}>Contraseña: </h3>
-                                    <input type='password' className={style.inputs} placeholder='Introduzca contraseña' {...register('password')}></input>
+                                    <input 
+                                        className={style.inputs} 
+                                        type='password' 
+                                        placeholder='Introduzca contraseña' 
+                                        autoComplete='off'
+                                        name= 'password'
+                                        {...register('password', {
+                                            onChange: handleInput
+                                        })}
+                                    ></input>
                                 </div>
+                                {errors.password && <p className={style.errores}>{errors.password}</p>}
                                 <div className={style.dataEntry}>
                                     <h3 className={style.textos}>Repita contraseña: </h3>
-                                    <input type='password' className={style.inputs} placeholder='Repita contraseña' {...register('password')}></input>
+                                    <input 
+                                        className={style.inputs} 
+                                        type='password' 
+                                        placeholder='Repita contraseña' 
+                                        autoComplete='off'
+                                        onChange={handleInput}
+                                        name= 'confirm_password'
+                                    ></input>
                                 </div>
-
-
-{/* 
-        <h3 className={style.textos}>Contraseña: </h3>
-        <input className={style.inputs} placeholder='Introduzca contraseña' name="password" type="password" 
-        ref={register({required: "You must specify a password", 
-        minLength: {value: 8, message: "Password must have at least 8 characters"}})} />
-        {errors.password && <p>{errors.password.message}</p>}
-  
-        <h3 className={style.textos}>Repita contraseña: </h3>
-        <input className={style.inputs} placeholder='Introduzca contraseña' name="password_repeat" type="password" 
-        ref={register({validate: value => value === password.current || "The passwords do not match"})}/>
-        {errors.password_repeat && <p>{errors.password_repeat.message}</p>} */}
-
-
+                                {errors.confirm_password && <p className={style.errores}>{errors.confirm_password}</p>}
 
                                 <div className={style.dataEntry}>
                                     <h3 className={style.textos}>Género: </h3>
-                                    <select {...register('gender')} className={style.inputs}  >
+                                    <select {...register('gender')} className={style.inputsSelect}  >
                                         <option value="none" selected disabled hidden>Seleccione una opción</option>
                                         <option value='Otro'>Otro</option>
                                         <option value='Hombre'>Hombre</option>
@@ -163,7 +178,7 @@ const RegistrationForm = ({category, profileData}) => {
                                 </div>
                                 <div className={style.dataEntry}>
                                     <h3 className={style.textos}>Tipo de documento: </h3>
-                                    <select {...register('idType')} className={style.inputs}  >
+                                    <select {...register('idType')} className={style.inputsSelect}  >
                                         <option value="none" selected disabled hidden>Seleccione una opción</option>
                                         <option value='otro'>Otro</option>
                                         <option value='NIE'>NIE</option>
@@ -172,11 +187,11 @@ const RegistrationForm = ({category, profileData}) => {
                                 </div>
                                 <div className={style.dataEntry}>
                                     <h3 className={style.textos}>Número de Documento: </h3>
-                                    <input  className={style.inputs} placeholder='Introduzca el número de documento' {...register('idNumber')}></input>
+                                    <input  className={style.inputs} placeholder='Introduzca el número de documento' {...register('idNumber')}autoComplete='off'></input>
                                 </div>
                                 <div className={style.dataEntry}>
                                     <h3 className={style.textos}>Dirección: </h3>
-                                    <input className={style.inputs} placeholder='Introduzca su dirección' {...register('address')}></input>
+                                    <input className={style.inputs} placeholder='Introduzca su dirección' {...register('address')}autoComplete='off'></input>
                                 </div>
                                 <div className={style.dataEntry}>
                                     <h3 className={style.textos}>Descripción: </h3>
@@ -201,13 +216,34 @@ const RegistrationForm = ({category, profileData}) => {
                                 </div>  
                                 <div className={style.dataEntry}>
                                     <h3 className={style.textos}>Nueva contraseña: </h3>
-                                    <input type='password' className={style.inputs} placeholder='Introduzca nueva' ></input>
-                                </div>  
+                                    <input 
+                                        className={style.inputs} 
+                                        type='password' 
+                                        placeholder='Introduzca nueva contraseña' 
+                                        autoComplete='off'
+                                        name= 'password'
+                                        {...register('password', {
+                                            onChange: handleInput
+                                        })}
+                                    ></input>
+                                </div>
+                                {errors.password && <p className={style.errores}>{errors.password}</p>}
                                 <div className={style.dataEntry}>
                                     <h3 className={style.textos}>Repita nueva contraseña: </h3>
-                                    <input type='password' className={style.inputs} placeholder='Repita nueva contraseña' name='password' {...register('password')}></input>
+                                    <input 
+                                        className={style.inputs} 
+                                        type='password' 
+                                        placeholder='Repita nueva contraseña' 
+                                        autoComplete='off'
+                                        onChange={handleInput}
+                                        name= 'confirm_password'
+                                    ></input>
                                 </div>
+                                {errors.confirm_password && <p className={style.errores}>{errors.confirm_password}</p>}
+
                         </div>
+
+                        
                         : null }
 
 

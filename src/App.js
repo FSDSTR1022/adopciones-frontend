@@ -22,7 +22,7 @@ function App() {
         <Header></Header>
         <Routes>
           <Route path='/' element={<HomePage/>}></Route>
-          <Route path='/pets' element={<PetsPage/>}></Route> 
+          <Route path='/pets' element={<PetsPage category='pets'/>}></Route> 
           <Route path='/pets/:id' element={<ProfilePage category='pets'/>}></Route>
           <Route path='/users' element={<UsersPage/>}></Route>
           <Route path='/users/:id' element={<ProfilePage category='users'/>}></Route>
@@ -30,19 +30,15 @@ function App() {
           <Route path='/users/edit/:id' element={<EditionPage category='users'/>}></Route>
           <Route path='/cookies' element={<DisclaimerPage category='cookies'/>}></Route>
           <Route path='/privacypolicy' element={<DisclaimerPage category='privacy'/>}></Route>
+          <Route path='/legalnotice' element={<DisclaimerPage category='legal'/>}></Route>
           <Route path='/pets/newpet' element={<RegistrationPage category='pets'/>}></Route>
           <Route path='/users/newuser' element={<RegistrationPage category='users'/>}></Route>
           <Route path='/users/passwordreset/:id' element={<RegistrationPage category='users' category2='password'/>}></Route>
+          <Route path='/login' element={<LoginPage category='users'/>}></Route>
+          <Route path='/success/:id' element={<SuccessPage category='users'/>}></Route>
 
 
           <Route path='/pets/adoption/:id' element={<AdoptionPage/>}></Route>
-          <Route path='/login' element={<LoginPage category='users'/>}></Route>
-          {/* <Route path='/passwordreset' element={<PasswordResetPage/>}></Route> */}
-          <Route path='/success' element={<SuccessPage/>}></Route>
-          {/* <Route path='/adoption' element={<AdoptionPage/>}></Route> */}
-          {/* <Route path='/users/:id' element={<UsersProfilePage/>}></Route> */}
-      
-
         </Routes>
         <Footer></Footer>
       </BrowserRouter>

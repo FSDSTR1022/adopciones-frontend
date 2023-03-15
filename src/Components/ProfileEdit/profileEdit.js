@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import Button from "../Button/button";
 import styles from "./profileEdit.module.css"
 import { useForm} from 'react-hook-form'
@@ -11,6 +11,33 @@ const ProfileEdit = ({profileData, category}) => {
         const {id} = useParams()
         const upload = () => {
      }
+//gender
+     function handleChange(e) {
+        console.log('evento', e)
+        setGender(e.target.value);
+      }
+      const [gender, setGender] = useState('')
+
+      useEffect(
+        () => {
+            setGender(profileData.gender)
+        }
+      ,[profileData.gender])
+    
+// idType
+    function handleChangeType(e) {
+        console.log('evento', e)
+        setidType(e.target.value);
+    }
+    const [idType, setidType] = useState('')
+
+    useEffect(
+        () => {
+            setidType(profileData.idType)
+        }
+    ,[profileData.idType])
+
+
         async function handleRegistration (registroDatos) {
             const formdata = new FormData()
             formdata.append('file', image) 
@@ -30,17 +57,17 @@ const ProfileEdit = ({profileData, category}) => {
                     mode:'cors',
                     headers: {
                         'Content-Type': 'application/json',
+                        Authorization: `Bearer ${localStorage.getItem('token')}`
                     },
                     body: JSON.stringify({...registroDatos, picture:data.url}),
                 })
                 .then(res => res = res.json())
                 .then(itemUpdated => {
                 if (itemUpdated.status === 'success') {
-                    alert(itemUpdated.message)
+                    alert('Perfil actualizado')
                     window.location.href = `/${category}/${id}`
-                }                    
-                else alert(itemUpdated.message)
-
+                }
+                else alert(itemUpdated.message + ': ' + itemUpdated.details)
             }) 
                 .catch(error => console.log(error));
             })}
@@ -58,20 +85,20 @@ const ProfileEdit = ({profileData, category}) => {
                                     <div className={styles.itemData}>
                                         <h4 >Email: <input defaultValue={profileData.email} {...register('email')} className={styles.editInput}/></h4>
                                         <h4 >Teléfono: <input defaultValue={profileData.phone} {...register('phone')} className={styles.editInput}/></h4>
-                                        <h4 >Género: {profileData.gender}
-                                        <select defaultValue={profileData.gender} {...register('gender')} className={styles.editInput}  >
+                                        <h4 >Género: 
+                                        <select value={gender} {...register('gender')} onChange={handleChange} className={styles.editInput} >
                                             <option value='Otro'>Otro</option>
                                             <option value='Hombre'>Hombre</option>
                                             <option value='Mujer'>Mujer</option>
                                         </select></h4>
                                         <h4 >Tipo de documento: 
-                                        <select value={profileData.idType} {...register('idType')} className={styles.editInput}  >
+                                        <select value={idType} {...register('idType')} onChange={handleChangeType} className={styles.editInput}  >
                                             <option value='Otro'>Otro</option>
                                             <option value='NIE'>NIE</option>
                                             <option value='NIF'>NIF</option>
                                         </select></h4>
                                         <h4 >Número de documento: <input defaultValue={profileData.idNumber} {...register('idNumber')} className={styles.editInput}/></h4>
-                                        <h4 >Descripción: <input defaultValue={profileData.description} {...register('description')} className={styles.editInputDescription}/></h4>
+                                        <h4 >Descripción: <textarea defaultValue={profileData.description} {...register('description')} className={styles.editInputDescription}/></h4>
                                     </div>
                                     </>                                
                                 : null}
@@ -80,7 +107,7 @@ const ProfileEdit = ({profileData, category}) => {
                                     <div className={styles.itemData}>
                                         <h4 >Fecha nacimiento: <input type='date' defaultValue={profileData?.birthdate?.split('T')[0]} className={styles.editInput}/></h4>
                                         <h4 >Género: 
-                                        <select value={profileData.gender} {...register('gender')} className={styles.editInput}  >
+                                        <select value={gender} {...register('gender')} onChange={handleChange} className={styles.editInput} >
                                             <option value='Otro'>Otro</option>
                                             <option value='Macho'>Macho</option>
                                             <option value='Hembra'>Hembra</option>

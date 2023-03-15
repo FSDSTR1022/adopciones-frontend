@@ -8,18 +8,16 @@ const LoginPage = ({category}) => {
 
     useEffect(() => {
         const getUsers = async () => {
-            const rawData = await fetch('http://localhost:8000/users')
+            const rawData = await fetch(`http://localhost:8000/${category}`)
             const users = await rawData.json()
             setUsers(users.users)
         }
         getUsers()
     }, [])
 
-    console.log('user', allItems)
-
     return(
             <>
-                <LoginForm allItems={allItems} ></LoginForm>
+                <LoginForm allItems={allItems} category='users'></LoginForm>
             </>
     )}
 

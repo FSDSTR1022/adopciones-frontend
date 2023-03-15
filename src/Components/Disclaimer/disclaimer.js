@@ -1,12 +1,14 @@
 import React from "react";
+import Titulos from "../Titulos/titulos";
 import styles from './disclaimer.module.css'
 
 const Disclaimer = ({category}) => {
     return <div className={styles.menuGeneral}> 
-                <h1>Política de {category}</h1>
 
                 {category == 'Cookies' ? 
                 <>
+                <h1>Política de {category}</h1>
+
                 <p>Blue Team Adopciones informa acerca del uso de las cookies en su página web: https://www.blueteamadopciones.com/</p>
                 <h2>¿Qué son las cookies?</h2>
                 <div className={styles.hardtext}>
@@ -131,6 +133,8 @@ const Disclaimer = ({category}) => {
 
                 {category == 'Privacidad' ? 
                 <>
+                <h1>Política de {category}</h1>
+
                 <h2>Protección de datos de carácter personal según el RGPD</h2>
 
                 <div className={styles.hardtext}>
@@ -215,6 +219,39 @@ const Disclaimer = ({category}) => {
                     <p>En todo caso, el usuario, tras acreditar su identidad, podrá solicitar que no se le haga llegar más información comercial a través de los canales de Atención al Cliente.</p>
                 </div> 
                 </> : null}
+
+                {/* {category == 'Legal' ? 
+                <>
+                <h1>Aviso Legal</h1>
+                    <p>En cumplimiento con el deber de información recogido en artículo 10 de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y del Comercio Electrónico (LSSICE), el propietario de la web https://www.protectoramalaga.com/, le informa de lo siguiente:</p>
+                    <p>• Denominación social: Sociedad Protectora de Animales y Plantas de Malaga</p>
+                    <p>• NIF: G29029436</p>
+                    <p>• Domicilio: c/ Nyan Cat, 10 29640 Malaga España</p>
+                    <br></br>
+                    <p>Con los límites establecidos en la ley, <a>https://www.adopcionesblueteam.com/</a> no asume ninguna responsabilidad derivada de la falta de veracidad, integridad, actualización y precisión de los datos o informaciones que se contienen en sus páginas de Internet.</p>
+                    <br></br>
+                    <p>Los contenidos e información no vinculan a https://www.adopcionesbluteam.com/ ni constituyen opiniones, consejos o asesoramiento legal de ningún tipo pues se trata meramente de un servicio ofrecido con carácter informativo y divulgativo.</p>
+                    <br></br>
+                    <p>El usuario tiene toda la responsabilidad sobre el contenido de su web, la información transmitida y almacenada, los enlaces de hipertexto, las reivindicaciones de terceros y las acciones legales en referencia a propiedad intelectual, derechos de terceros y protección de menores.</p>
+                    <br></br>
+                    <p>El usuario es responsable respecto a las leyes y reglamentos en vigor y las reglas que tienen que ver con el funcionamiento del servicio online, comercio electrónico, derechos de autor, mantenimiento del orden público, así como principios universales de uso de Internet.</p>
+                    <br></br>
+                    <p>El usuario indemnizará a Sociedad Protectora de Animales y Plantas de BlueTeam por los gastos que generara la imputación de Sociedad Protectora de Animales y Plantas de BlueTeam en alguna causa cuya responsabilidad fuera atribuible al usuario, incluidos honorarios y gastos de defensa jurídica, incluso en el caso de una decisión judicial no definitiva.</p>
+                    <h3>Protección de la información alojada</h3>
+                    <p>Sociedad Protectora de Animales y Plantas de BlueTeam realiza copias de seguridad de los contenidos alojados en sus servidores, sin embargo no se responsabiliza de la pérdida o el borrado accidental de los datos por parte de los usuarios. De igual manera, no garantiza la reposición total de los datos borrados por los usuarios, ya que los citados datos podrían haber sido suprimidos y/o modificados durante el periodo del tiempo transcurrido desde la última copia de seguridad.</p>
+                    <br></br>
+                    <p>Los servicios ofertados, excepto los servicios específicos de backup, no incluyen la reposición de los contenidos conservados en las copias de seguridad realizadas por Sociedad Protectora de Animales y Plantas de BlueTeam, cuando esta pérdida sea imputable al usuario; en este caso, se determinará una tarifa acorde a la complejidad y volumen de la recuperación, siempre previa aceptación del usuario.</p>
+                    <br></br>
+                    <p>La reposición de datos borrados sólo está incluida en el precio del servicio cuando la pérdida del contenido sea debida a causas atribuibles a Sociedad Protectora de Animales y Plantas de BlueTeam.</p>
+                    <br></br>
+                    <h3>Comunicaciones comerciales</h3>
+                    <p>En aplicación de la LSSI. Sociedad Protectora de Animales y Plantas de BlueTeam no enviará comunicaciones publicitarias o promocionales por correo electrónico u otro medio de comunicación electrónica equivalente que previamente no hubieran sido solicitadas o expresamente autorizadas por los destinatarios de las mismas.</p>
+                    <br></br>
+                    <p>En el caso de usuarios con los que exista una relación contractual previa, Sociedad Protectora de Animales y Plantas de BlueTeam sí está autorizado al envío de comunicaciones comerciales referentes a productos o servicios de Sociedad Protectora de Animales y Plantas de BlueTeam que sean similares a los que inicialmente fueron objeto de contratación con el cliente.</p>
+                    <br></br>
+                    <p>En todo caso, el usuario, tras acreditar su identidad, podrá solicitar que no se le haga llegar más información comercial a través de los canales de Atención al Cliente.</p>
+                </div> 
+                </> : null} */}
 
 
             </div>
