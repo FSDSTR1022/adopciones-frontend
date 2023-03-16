@@ -31,6 +31,8 @@
 }
 .picture{
     border-radius: 16px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
     z-index: 9997;
     object-fit: cover;
     width:100%;

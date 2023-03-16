@@ -21,6 +21,11 @@ input::placeholder{
     font-size:1rem;
     color: #bcbadf;
 }
+.inputsBig::placeholder{
+    font-family: 'Jaldi';
+    font-size:1rem;
+    color: #bcbadf;
+}
 .formderegistro{
     align-items: center;
     margin-bottom: 3rem;
@@ -55,6 +60,13 @@ input::placeholder{
     outline: none;
     box-shadow: 2px 0px 5px rgba(163, 163, 163, 0.3);
 }
+.inputsBig:focus{
+    outline: none;
+    box-shadow: 2px 0px 5px rgba(163, 163, 163, 0.3);
+}
+.inputs:hover{
+    background-color: #e2e8f0;
+}
 .inputs:hover{
     background-color: #e2e8f0;
 }
@@ -78,7 +90,7 @@ input::placeholder{
     width: 20rem;
     background-color: #edf2f7;
     border-radius: 8px;
-    height: 3rem;
+    height: 3rem; 
     padding: 1rem;    
 }
 .content-select:hover i{

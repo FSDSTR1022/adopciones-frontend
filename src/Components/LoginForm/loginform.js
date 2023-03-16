@@ -3,9 +3,12 @@ import styles from "./loginform.module.css"
 import { useForm } from "react-hook-form";
 import Titulos from "../Titulos/titulos";
 import Button from "../Button/button";
+import { useNavigate } from "react-router-dom";
 
-const LoginForm = ({category, allItems}) => {
+const LoginForm = () => {
 const { register, errors, handleSubmit } = useForm({});
+const navigate = useNavigate()
+
 async function handleRegistration (registroDatos) {
         fetch(`http://localhost:8000/login`, {
             method:'POST',
@@ -21,7 +24,8 @@ async function handleRegistration (registroDatos) {
             localStorage.setItem('token', data.Token)
            if (data.status === 'Success') {
             alert(data.message)
-            window.location.href = `/pets`
+            navigate(`/pets`)
+            navigate(0)
            }
            else alert(data.message + ': ' + data.details)
         })

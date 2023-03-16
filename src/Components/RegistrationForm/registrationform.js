@@ -3,11 +3,14 @@ import style from "./registrationform.module.css"
 import { useForm } from "react-hook-form";
 import Button from "../Button/button";
 import passwordValidation from './passwordValidation'
+import Titulos from "../Titulos/titulos";
+import { useNavigate } from "react-router-dom";
 
 const RegistrationForm = ({category, profileData}) => {
         const [image, setImage] = useState()
         const [url, setUrl] = useState("")
         const { register, handleSubmit, watch } = useForm({});
+        const navigate = useNavigate()
         const upload = () => {
      }
         const [values, setValues] = useState({
@@ -58,7 +61,9 @@ const RegistrationForm = ({category, profileData}) => {
                 .then(newItem => {
                     if (newItem.status === 'success') {
                         alert(newItem.message)
-                        window.location.href = `/success/${newItem.userobj._id}`
+                        // navigate(`/${category}/${newItem.userobj._id}`)
+                        {category === 'pets' ? navigate('/pets'): navigate('/login')}
+                        navigate(0)
                     }                    
                     else alert(newItem.message + ':' + newItem.details)    
                 })
@@ -77,12 +82,12 @@ const RegistrationForm = ({category, profileData}) => {
                         {category === 'pets' ?  
                             <div>
                                 <div className={style.dataEntry}>
-                                    <h3 className={style.textos}>Nombre: </h3>
+                                    <Titulos texto='Nombre:' span='h6'></Titulos>
                                     <input className={style.inputs} placeholder='Introduzca el nombre'  name='name '{...register('name')} autoComplete='off'></input>
                                 </div>
                                 <div className={style.dataEntry}>
-                                    <h3 className={style.textos}>Tipo: </h3>
-                                    <select {...register('type')} className={style.inputs}  >
+                                    <Titulos texto='Tipo:' span='h6'></Titulos>
+                                    <select {...register('type')} className={style.inputsSelect}  >
                                         <option value="none" selected disabled hidden>Seleccione una opción</option>
                                         <option value='Otro'>Otro</option>
                                         <option value='Gato'>Gato</option>
@@ -91,8 +96,8 @@ const RegistrationForm = ({category, profileData}) => {
                                 </div>
 
                                 <div className={style.dataEntry}>
-                                    <h3 className={style.textos}>Género: </h3>
-                                    <select {...register('gender')} className={style.inputs}  >
+                                    <Titulos texto='Género:' span='h6'></Titulos>
+                                    <select {...register('gender')} className={style.inputsSelect}  >
                                         <option value="none" selected disabled hidden>Seleccione una opción</option>
                                         <option value='Otro'>Otro</option>
                                         <option value='Macho'>Macho</option>
@@ -100,27 +105,27 @@ const RegistrationForm = ({category, profileData}) => {
                                     </select>
                                 </div>
                                 <div className={style.dataEntry}>
-                                    <h3 className={style.textos}>Fecha de nacimiento: </h3>
+                                    <Titulos texto='Fecha de nacimiento:' span='h6'></Titulos>
                                     <input type='Date' className={style.inputs} {...register('birthdate')}></input>
                                 </div>
                                 <div className={style.dataEntry}>
-                                    <h3 className={style.textos}>Color: </h3>
+                                     <Titulos texto='Color:' span='h6'></Titulos>
                                     <input  className={style.inputs} placeholder='Introduzca un color' {...register('color')}autoComplete='off'></input>
                                 </div>
                                 <div className={style.dataEntry}>
-                                    <h3 className={style.textos}>Raza: </h3>
+                                    <Titulos texto='Raza:' span='h6'></Titulos>
                                     <input  className={style.inputs} placeholder='Introduzca una raza' {...register('breed')}autoComplete='off'></input>
                                 </div>
                                 <div className={style.dataEntry}>
-                                    <h3 className={style.textos}>Fecha de llegada: </h3>
+                                   <Titulos texto='Fecha de llegada:' span='h6'></Titulos>
                                     <input type='date' className={style.inputs} {...register('arrivalDate')}></input>
                                 </div>
                                 <div className={style.dataEntry}>
-                                    <h3 className={style.textos}>Descripción: </h3>
+                                    <Titulos texto='Decripción:' span='h6'></Titulos>
                                     <input className={style.inputsBig} placeholder='Introduzca la información' {...register('description')}></input>
                                 </div>
                                 <div className={style.dataEntry}>
-                                    <h3 className={style.textos}>Foto: </h3>
+                                    <Titulos texto='Foto:' span='h6'></Titulos>
                                     <input type='file' className={style.inputs} onChange={(e)=>setImage(e.target.files[0])}></input>
                                 </div>
                             </div>
@@ -129,19 +134,19 @@ const RegistrationForm = ({category, profileData}) => {
                         {category=='users' ?  
                             <div>
                                 <div className={style.dataEntry}>
-                                    <h3 className={style.textos}>Nombre: </h3>
+                                     <Titulos texto='Nombre:' span='h6'></Titulos>
                                     <input className={style.inputs} placeholder='Introduzca el nombre' name='name '{...register('name')}autoComplete='off'></input>
                                 </div>  
                                 <div className={style.dataEntry}>
-                                    <h3 className={style.textos}>Email: </h3>
+                                    <Titulos texto='Email:' span='h6'></Titulos>
                                     <input className={style.inputs} placeholder='Introduzca el email' name='email '{...register('email')}autoComplete='off'></input>
                                 </div>
                                 <div className={style.dataEntry}>
-                                    <h3 className={style.textos}>Teléfono: </h3>
-                                    <input  className={style.inputs} placeholder='Introduzca número de telefono' {...register('phone')}autoComplete='off'></input>
+                                <Titulos texto='Teléfono:' span='h6'></Titulos>
+                                <input  className={style.inputs} placeholder='Introduzca número de telefono' {...register('phone')}autoComplete='off'></input>
                                 </div>
                                 <div className={style.dataEntry}>
-                                    <h3 className={style.textos}>Contraseña: </h3>
+                                <Titulos texto='Contraseña:' span='h6'></Titulos>
                                     <input 
                                         className={style.inputs} 
                                         type='password' 
@@ -155,7 +160,7 @@ const RegistrationForm = ({category, profileData}) => {
                                 </div>
                                 {errors.password && <p className={style.errores}>{errors.password}</p>}
                                 <div className={style.dataEntry}>
-                                    <h3 className={style.textos}>Repita contraseña: </h3>
+                                    <Titulos texto='Repita contraseña:' span='h6'></Titulos>
                                     <input 
                                         className={style.inputs} 
                                         type='password' 
@@ -168,7 +173,7 @@ const RegistrationForm = ({category, profileData}) => {
                                 {errors.confirm_password && <p className={style.errores}>{errors.confirm_password}</p>}
 
                                 <div className={style.dataEntry}>
-                                    <h3 className={style.textos}>Género: </h3>
+                                    <Titulos texto='Género:' span='h6'></Titulos>
                                     <select {...register('gender')} className={style.inputsSelect}  >
                                         <option value="none" selected disabled hidden>Seleccione una opción</option>
                                         <option value='Otro'>Otro</option>
@@ -177,7 +182,7 @@ const RegistrationForm = ({category, profileData}) => {
                                     </select>
                                 </div>
                                 <div className={style.dataEntry}>
-                                    <h3 className={style.textos}>Tipo de documento: </h3>
+                                    <Titulos texto='Tipo de documento:' span='h6'></Titulos>
                                     <select {...register('idType')} className={style.inputsSelect}  >
                                         <option value="none" selected disabled hidden>Seleccione una opción</option>
                                         <option value='otro'>Otro</option>
@@ -186,19 +191,19 @@ const RegistrationForm = ({category, profileData}) => {
                                     </select>
                                 </div>
                                 <div className={style.dataEntry}>
-                                    <h3 className={style.textos}>Número de Documento: </h3>
+                                    <Titulos texto='Número de documento:' span='h6'></Titulos>
                                     <input  className={style.inputs} placeholder='Introduzca el número de documento' {...register('idNumber')}autoComplete='off'></input>
                                 </div>
                                 <div className={style.dataEntry}>
-                                    <h3 className={style.textos}>Dirección: </h3>
+                                    <Titulos texto='Dirección:' span='h6'></Titulos>
                                     <input className={style.inputs} placeholder='Introduzca su dirección' {...register('address')}autoComplete='off'></input>
                                 </div>
                                 <div className={style.dataEntry}>
-                                    <h3 className={style.textos}>Descripción: </h3>
+                                    <Titulos texto='Descripción:' span='h6'></Titulos>
                                     <input  className={style.inputs} placeholder='Introduzca la información' {...register('description')}></input>
                                 </div>
                                 <div className={style.dataEntry}>
-                                    <h3 className={style.textos}>Foto: </h3>
+                                    <Titulos texto='Foto:' span='h6'></Titulos>
                                     <input type='file' className={style.inputs} onChange={(e)=>setImage(e.target.files[0])}></input>
                                 </div>
                             </div>
@@ -207,15 +212,15 @@ const RegistrationForm = ({category, profileData}) => {
                         {category=='password' ?  
                         <div>
                                 <div className={style.dataEntry}>
-                                    <h3 className={style.textos}>Email: </h3>
+                                    <Titulos texto='Email:' span='h6'></Titulos>
                                     <input defaultValue={profileData.email} className={style.inputs} placeholder='Introduzca su email' ></input>
                                 </div>
                                 <div className={style.dataEntry}>
-                                    <h3 className={style.textos}>Contraseña: </h3>
+                                     <Titulos texto='Contraseña:' span='h6'></Titulos>
                                     <input type='password' className={style.inputs} placeholder='Introduzca contraseña' ></input>
                                 </div>  
                                 <div className={style.dataEntry}>
-                                    <h3 className={style.textos}>Nueva contraseña: </h3>
+                                    <Titulos texto='Nueva contraseña:' span='h6'></Titulos>
                                     <input 
                                         className={style.inputs} 
                                         type='password' 
@@ -229,7 +234,7 @@ const RegistrationForm = ({category, profileData}) => {
                                 </div>
                                 {errors.password && <p className={style.errores}>{errors.password}</p>}
                                 <div className={style.dataEntry}>
-                                    <h3 className={style.textos}>Repita nueva contraseña: </h3>
+                                    <Titulos texto='Repita nueva contraseña:' span='h6'></Titulos>
                                     <input 
                                         className={style.inputs} 
                                         type='password' 
@@ -240,24 +245,16 @@ const RegistrationForm = ({category, profileData}) => {
                                     ></input>
                                 </div>
                                 {errors.confirm_password && <p className={style.errores}>{errors.confirm_password}</p>}
-
-                        </div>
-
-                        
+                        </div>                        
                         : null }
-
-
-
-
                         <hr className={style.divider}></hr>
                         <div >
-                            {category === 'pets' ? <Button texto='Añadir animal' onClick={upload} /*onClick={handleSubmit(onSubmit)}*/ span='button3'></Button> :
-                            <Button texto='Enviar' onClick={upload} /*onClick={handleSubmit(onSubmit)}*/ span='button3'></Button>}
+                            {category === 'pets' ? <Button texto='Añadir animal' onClick={upload} span='button3'></Button> :
+                            <Button texto='Enviar' onClick={upload} span='button3'></Button>}
                         </div>
                     </div>
                 </form>
-    </>)
-       
+    </>)       
     }
 
 export default RegistrationForm

@@ -21,6 +21,10 @@ const Footer = () => {
             <div className={styles.footer2}>
                 <h2>2023 © Una plataforma de <a>Blue Team</a></h2>
                 <div className={styles.condiciones}>
+                    <h2></h2>
+                    <h2></h2>
+                    <h2></h2>
+                    <h2></h2>
                     <h2><a href="/legalnotice">Aviso legal</a></h2>
                     <h2><a href="/privacypolicy">Política de Privacidad</a></h2>
                     <h2><a href="/cookies">Cookies</a></h2>

@@ -3,47 +3,42 @@ import Button from "../Button/button";
 import styles from "./profileEdit.module.css"
 import { useForm} from 'react-hook-form'
 import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const ProfileEdit = ({profileData, category}) => {
         const [image, setImage] = useState()
         const [url, setUrl] = useState("")
         const {register, handleSubmit} = useForm()
         const {id} = useParams()
+        const navigate = useNavigate()
         const upload = () => {
      }
-//gender
      function handleChange(e) {
-        console.log('evento', e)
         setGender(e.target.value);
       }
       const [gender, setGender] = useState('')
-
       useEffect(
         () => {
             setGender(profileData.gender)
         }
       ,[profileData.gender])
     
-// idType
     function handleChangeType(e) {
         console.log('evento', e)
         setidType(e.target.value);
     }
     const [idType, setidType] = useState('')
-
     useEffect(
         () => {
             setidType(profileData.idType)
         }
     ,[profileData.idType])
 
-
         async function handleRegistration (registroDatos) {
             const formdata = new FormData()
             formdata.append('file', image) 
             formdata.append('upload_preset', 'adopciones')
             formdata.append('cloud_name', 'dquuplk8z')
-            console.log('registro de datos: ', registroDatos)
             fetch('https://api.cloudinary.com/v1_1/dquuplk8z/image/upload',{ 
                 method: 'put',
                 body: formdata
@@ -65,7 +60,7 @@ const ProfileEdit = ({profileData, category}) => {
                 .then(itemUpdated => {
                 if (itemUpdated.status === 'success') {
                     alert('Perfil actualizado')
-                    window.location.href = `/${category}/${id}`
+                    navigate(`/${category}/${id}`)
                 }
                 else alert(itemUpdated.message + ': ' + itemUpdated.details)
             }) 

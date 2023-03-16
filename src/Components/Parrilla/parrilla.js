@@ -11,7 +11,6 @@ const Parrilla = ({allItems, category}) => {
     useEffect(() => {
         let url = `http://localhost:8000/${category}`;
         url = category === 'pets' ? (url+`?status=EN_ADOPCION`) : url 
-        console.log('url', url)
 
         const getPet = async () => {
             const rawData = await fetch(url, {
@@ -20,10 +19,8 @@ const Parrilla = ({allItems, category}) => {
                     Authorization: `Bearer ${localStorage.getItem('token')}`
                 },
             })
-            console.log('autorizacion', localStorage)
             const items = await rawData.json()
             setItem(items.items)
-            console.log('items', items)
         }
         getPet()
     }, [])

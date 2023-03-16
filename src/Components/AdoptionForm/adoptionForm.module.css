@@ -1,22 +1,9 @@
-.formularioRegistro h2{
-    font-family: 'Jaldi';
-    font-weight: bold;
-    color: #313981;
-    font-size: 2.5rem;
-}
-.formularioRegistro h3{
-    font-family: 'Jaldi';
-    color: #313981;
-    font-weight: bold;
-    font-size: 1rem;
-}
-.formularioRegistro input, option{
+.formularioRegistro input, textarea{
     font-family: 'Jaldi';
     color: black;
     font-size: 1.0rem;
     display: flex;
 }
-
 input::placeholder{
     font-family: 'Jaldi';
     font-size:1rem;
@@ -37,7 +24,7 @@ input::placeholder{
     flex-direction: column;
     align-items: center;
     border: 1px solid #bcb9db;
-    border-radius: 15px;
+    border-radius: 16px;
     padding: 1rem;
     margin-bottom: 3rem;
 }
@@ -45,31 +32,19 @@ input::placeholder{
     gap: 2rem;
     margin: 0.5rem;
 }
-.textos{
-}
 .inputs{
-    width: 20rem;
+    width: 100%;
     background-color: #edf2f7;
-    border-radius: 10px;
-    height: 3rem;
-    padding: 1rem;
+    border-radius: 8px;
+    height: auto;
+    padding: 1rem;    
 }
-.inputsBig{
-    width: 20rem;
-    background-color: #edf2f7;
-    border-radius: 10px;
-    height: 3rem;
-    padding: 1rem;
-    height: 6rem;
-    text-size-adjust: auto;
+.inputs:focus{
+    outline: none;
+    box-shadow: 2px 0px 5px rgba(163, 163, 163, 0.3);
 }
 .inputs:hover{
     background-color: #e2e8f0;
-}
-.inputs:focus{
-    border: 1px solid #bcb9db;
-    outline: none;
-    box-shadow: 2px 0px 30px rgba(163, 163, 163, 0.3);
 }
 .formularioRegistro{
     margin-top: 7rem;
@@ -77,22 +52,26 @@ input::placeholder{
     flex-direction: column;
     align-items: center;
 }
-.button{
-    display: flex;
-    background-color: #f23084;
-    color: white;
-    font-family: 'Jaldi';
-    font-weight: bold;
-    font-size: 1.2rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    height: 2rem;
-    border-radius: 10px;
-}
 hr.divider {
     border-top: 1px solid #bcb9db;
-    border-radius: 5px;
+    border-radius: 8px;
     width: 90%;
     display: flex;
     margin: 1rem;
   }
+.itemName {
+    font-family: 'Jaldi';
+    font-weight: bold;
+    color: #313981;
+    font-size: 2.5rem;
+}
+.itemName:hover {
+    font-family: 'Jaldi';
+    font-weight: bold;
+    color: #ffc61b;
+    font-size: 2.5rem;
+}
+.titulo{
+    display: flex;
+    gap: 1rem
+}

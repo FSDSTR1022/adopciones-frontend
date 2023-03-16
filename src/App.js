@@ -4,7 +4,6 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import HomePage from './Navigation/HomePage/homepage';
 import PetsPage from './Navigation/PetsPage/petsPage';
 import LoginPage from './Navigation/LoginPage/loginpage';
-import PasswordResetPage from './Navigation/PasswordResetPage/passwordresetpage'
 import RegistrationPage from './Navigation/RegistrationPage/registrationpage'
 import SuccessPage from './Navigation/SuccessPage/sucessPage'
 import AdoptionPage from './Navigation/AdoptionPage/adoptionPage'
@@ -24,7 +23,7 @@ function App() {
           <Route path='/' element={<HomePage/>}></Route>
           <Route path='/pets' element={<PetsPage category='pets'/>}></Route> 
           <Route path='/pets/:id' element={<ProfilePage category='pets'/>}></Route>
-          <Route path='/users' element={<UsersPage/>}></Route>
+          <Route path='/users' element={<UsersPage/>}></Route>                     {/* token */}
           <Route path='/users/:id' element={<ProfilePage category='users'/>}></Route>
           <Route path='/pets/edit/:id' element={<EditionPage category='pets'/>}></Route>
           <Route path='/users/edit/:id' element={<EditionPage category='users'/>}></Route>
@@ -35,9 +34,7 @@ function App() {
           <Route path='/users/newuser' element={<RegistrationPage category='users'/>}></Route>
           <Route path='/users/passwordreset/:id' element={<RegistrationPage category='users' category2='password'/>}></Route>
           <Route path='/login' element={<LoginPage category='users'/>}></Route>
-          <Route path='/success/:id' element={<SuccessPage category='users'/>}></Route>
-
-
+          {/* <Route path='/success/:id' element={<SuccessPage category='users'/>}></Route> */}
           <Route path='/pets/adoption/:id' element={<AdoptionPage/>}></Route>
         </Routes>
         <Footer></Footer>

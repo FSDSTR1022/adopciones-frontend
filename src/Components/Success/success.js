@@ -1,4 +1,4 @@
-import React , {useState, useEffect } from "react";
+import React from "react";
 import { useParams } from "react-router-dom";
 import styles from "./success.module.css"
 import Button from "../Button/button";
@@ -6,6 +6,9 @@ import Button from "../Button/button";
 const Success = ({profileData, category}) => {
     const {slug} = useParams(); 
     const {id} = useParams()
+    console.log('category', category)
+    console.log('id', id)
+
 
     return  <>
         <div className={styles.exito}>

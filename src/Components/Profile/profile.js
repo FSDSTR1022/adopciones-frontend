@@ -1,12 +1,22 @@
-import React from "react";
+import React, {useState, useEffect}from "react";
 import styles from "./profile.module.css"
 import { useParams} from 'react-router-dom'
 import Button from "../Button/button";
 import Titulos from "../Titulos/titulos";
+import { useNavigate } from "react-router-dom";
 
 const Profile = ({profileData={}, category}) => {
 
     const {id} = useParams()
+    const navigate = useNavigate()
+    const [isLogged, setIsLogged] = useState(false)
+    
+    useEffect( () => {
+        const token = localStorage.getItem('token')
+        if(token){
+            setIsLogged(true)
+        }
+    }, [])
 
     function getAge(dateString) { 
         const today = new Date(); 
@@ -18,18 +28,20 @@ const Profile = ({profileData={}, category}) => {
         return itemAge;
         }
 
-    async function deleteItem() {
+    async function deleteItem() { 
     const itemData = fetch(`http://localhost:8000/${category}/${id}`, {
         method:'DELETE',
         mode:'cors',
-        headers:{'Content-Type': 'application/json',},
+        headers:{'Content-Type': 'application/json',
+            Authorization: `Bearer ${localStorage.getItem('token')}`
+        },
         body:JSON.stringify()
         })
         .then(res => res.json())
         .then(itemRemoved => {
             if (itemRemoved.status === 'success') {
                 alert(itemRemoved.message)
-                window.location.href = `/${category}`
+                navigate(`/${category}`)
             }                    
             else alert(itemRemoved.message)
         })
@@ -64,7 +76,7 @@ const Profile = ({profileData={}, category}) => {
                                         <h4>Color: <a>{profileData.color}</a></h4>
                                         <h4>Raza: <a>{profileData.breed}</a></h4>
                                         <h4>Fecha de llegada: <a>{profileData?.arrivalDate?.split('T')[0]}</a></h4>
-                                        <h4>Estado: <a>{profileData.status}</a></h4>
+                                        <h4>Estado: {profileData.status === 'EN_ADOPCION' ? <a>En adopción</a> : <a>Adoptado</a>}</h4>
                                         <h4>Descripción: <a>{profileData.description}</a></h4>  
                                     </div>
                                     </>                                
@@ -75,14 +87,14 @@ const Profile = ({profileData={}, category}) => {
                                 <div className={styles.botonTotal}>
                                     <div className={styles.botonOpciones}>
                                         {/* {category == 'users' ? <Button texto='Cambiar Contraseña' ruta={`/${category}/passwordreset/${profileData._id}`} span='button4'></Button> : null} */}
-                                        <Button texto='Editar perfil' ruta={`/${category}/edit/${profileData._id}`} span='button4'></Button>
-                                        <button id="delete" onClick={deleteItem} ><a>Eliminar perfil</a></button>
+                                        {isLogged && <Button texto='Editar perfil' ruta={`/${category}/edit/${profileData._id}`} span='button4'></Button>} 
+                                        {isLogged && <button id="delete" onClick={deleteItem} ><a>Eliminar perfil</a></button>}                                        
                                         <Button texto='Atrás' ruta={`/${category}`} span='button4'></Button>
 
                                     </div>
                                     {category == 'users' ? 
                                         <div className={styles.botonCreate}>
-                                            <button> <a href={`/pets/newpet`} >Añadir mascota</a></button>
+                                            {isLogged && <button> <a href={`/pets/newpet`} >Añadir mascota</a></button>}
                                         </div> : 
                                         <Button texto='Adopta' ruta={`/${category}/adoption/${profileData._id}`} span='button1'></Button>
                                     }
