@@ -32,9 +32,8 @@ const Profile = ({profileData={}, category}) => {
     const itemData = fetch(`http://localhost:8000/${category}/${id}`, {
         method:'DELETE',
         mode:'cors',
-        headers:{'Content-Type': 'application/json',
-            Authorization: `Bearer ${localStorage.getItem('token')}`
-        },
+        headers:{'Content-Type': 'application/json',},
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
         body:JSON.stringify()
         })
         .then(res => res.json())

@@ -9,14 +9,15 @@ const ProfilePage = ({category}) => {
     
     useEffect(() => {
         const getProfile = async () => {
-            const itemData = await fetch(`http://localhost:8000/${category}/${id}`, {
-            headers:{'Content-Type': 'application/json',
-            Authorization: `Bearer ${localStorage.getItem('token')}`
-            },
-            body:JSON.stringify()
-            }) 
+            const itemData = await fetch(`http://localhost:8000/${category}/${id}`,{
+                method:'GET',
+                mode:'cors',
+                headers:{'Content-Type': 'application/json',},
+                Authorization: `Bearer ${localStorage.getItem('token')}`,
+                body:JSON.stringify()
+            })
             const profile = await itemData.json()
-            setProfile(profile.itemObj)
+            setProfile(profile.itemsObj)
         }
         getProfile()
     }, [])

@@ -7,7 +7,7 @@ const UsersPage = () => {
     const {slug} = useParams();
     const [allItems, setUsers] = useState([]);
     const [isLogged, setIsLogged] = useState(false)
-    const navigate = useNavigate() 
+    const navigate = useNavigate()
     
     useEffect( () => {
         const token = localStorage.getItem('token')
@@ -29,6 +29,7 @@ const UsersPage = () => {
 
     return(<>
         <Parrilla allItems={allItems} category={'users'}></Parrilla>
+        {isLogged && <h1>Estás logeado</h1>}
         </>
     )
 }

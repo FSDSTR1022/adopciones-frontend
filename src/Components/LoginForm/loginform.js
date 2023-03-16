@@ -5,7 +5,7 @@ import Titulos from "../Titulos/titulos";
 import Button from "../Button/button";
 import { useNavigate } from "react-router-dom";
 
-const LoginForm = () => {
+const LoginForm = (z) => {
 const { register, errors, handleSubmit } = useForm({});
 const navigate = useNavigate()
 
@@ -22,10 +22,10 @@ async function handleRegistration (registroDatos) {
         .then(data => {
             console.log('respuesta', data)
             localStorage.setItem('token', data.Token)
+            localStorage.setItem('userID', data.userID)
            if (data.status === 'Success') {
             alert(data.message)
             navigate(`/pets`)
-            navigate(0)
            }
            else alert(data.message + ': ' + data.details)
         })

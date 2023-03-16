@@ -17,7 +17,7 @@ const LoginPage = ({category}) => {
 
     return(
             <>
-                <LoginForm></LoginForm>
+                <LoginForm allItems={allItems} category='users'></LoginForm>
             </>
     )}
 
