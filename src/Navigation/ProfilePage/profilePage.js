@@ -11,12 +11,13 @@ const ProfilePage = ({category}) => {
         const getProfile = async () => {
             const itemData = await fetch(`http://localhost:8000/${category}/${id}`, {
             headers:{'Content-Type': 'application/json',
-            Authorization: `Bearer ${localStorage.getItem('token')}`
+            Authorization: `Bearer ${localStorage.getItem('token')}`,
             },
             body:JSON.stringify()
             }) 
             const profile = await itemData.json()
             setProfile(profile.itemObj)
+            
         }
         getProfile()
     }, [])

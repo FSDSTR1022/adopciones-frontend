@@ -10,13 +10,21 @@ const Profile = ({profileData={}, category}) => {
     const {id} = useParams()
     const navigate = useNavigate()
     const [isLogged, setIsLogged] = useState(false)
-    
+    const [isUser, setIsUser] = useState(false)
+
     useEffect( () => {
         const token = localStorage.getItem('token')
         if(token){
             setIsLogged(true)
         }
     }, [])
+
+    // useEffect( () => {
+    //     const thisUser = localStorage.getItem('userID')
+    //     if(thisUser === id ){
+    //         setIsUser(true)
+    //     }
+    // }, [])
 
     function getAge(dateString) { 
         const today = new Date(); 
@@ -33,7 +41,8 @@ const Profile = ({profileData={}, category}) => {
         method:'DELETE',
         mode:'cors',
         headers:{'Content-Type': 'application/json',
-            Authorization: `Bearer ${localStorage.getItem('token')}`
+            Authorization: `Bearer ${localStorage.getItem('token')}`,
+//            userID: `Bearer ${localStorage.getItem('userID')}`
         },
         body:JSON.stringify()
         })

@@ -20,7 +20,7 @@ const Parrilla = ({allItems, category}) => {
                 },
             })
             const items = await rawData.json()
-            setItem(items.items)
+            setItem(allItems)
         }
         getPet()
     }, [])
@@ -33,12 +33,12 @@ const Parrilla = ({allItems, category}) => {
                 : null}
             
             <div className={styles.parrilla}>
-            {items.map((item)=>(
+            {allItems.map((item)=>(
                 <div className={styles.fichaItem} key={item._id}>
                     <div className={styles.fichaContent}>
                         <img className={styles.picture} key={item.picture} src={item.picture} alt='' ></img>
-                        {category== 'pets' && item.type == "Perro" ? <h3 className={styles.emoji} key={item.type} >🐶</h3> : null}
-                        {category== 'pets' && item.type == "Gato" ? <h3 className={styles.emoji} key={item.type} >🐱</h3> : null}
+                        {/* {category== 'pets' && item.type == "Perro" ? <h3 className={styles.emoji} key={item.type} >🐶</h3> : null}
+                        {category== 'pets' && item.type == "Gato" ? <h3 className={styles.emoji} key={item.type} >🐱</h3> : null} */}
                     </div>
                     <div className={styles.lowInfo}>
                         <h3 className={styles.nombreItem} key={item.name} >{item.name}</h3>

@@ -7,6 +7,7 @@ const PetsPage = ({category}) => {
     const {slug} = useParams();
     const [allItems, setPet] = useState([]);
     const [filteredItems, setFilteredItems] = useState([]) 
+    
     useEffect(() => {
         const getPet = async () => {
             const rawData = await fetch(`http://localhost:8000/${category}?status=EN_ADOPCION`)
@@ -21,17 +22,17 @@ const PetsPage = ({category}) => {
     const allTypes = ['Ver todo', ...new Set(allItems.map(article => article.type))]
     const [types, setTypes] = useState(allTypes)
     const filterType = (type) => {
-        console.log(type)
         if (type === 'Ver todo'){
             setFilteredItems(allItems)
             return 
         }
         const filteredData = allItems.filter(article => article.type === type)
-        console.log('filteredData', filteredData)
         console.log('allItems', allItems)
+        console.log('filteredData', filteredData)
         setFilteredItems(filteredData)
+        console.log('filteredData', filteredData)
     }
-    
+    console.log('filteredItems', filteredItems)
     return(<>
         <Filter allTypes={allTypes} filterType={filterType}></Filter>
         <Parrilla  allItems={filteredItems} category={'pets'}></Parrilla> 

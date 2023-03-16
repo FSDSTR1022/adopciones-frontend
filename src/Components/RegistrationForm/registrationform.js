@@ -22,7 +22,7 @@ const RegistrationForm = ({category, profileData}) => {
             if(e.target.name === 'password'){
                 console.log('values ', values)
                 const error = passwordValidation(e.target.value, values.confirm_password)
-                console.log('eeror', error)
+                console.log('error', error)
                 setErrors(error)
             } 
             if(e.target.name === 'confirm_password'){
@@ -73,9 +73,9 @@ const RegistrationForm = ({category, profileData}) => {
                     onSubmit={handleSubmit(handleRegistration)}
                     className={style.formularioRegistro}>  
                     
-                    {category=='users' ? <h2>Regístrate</h2> : null}
-                    {category=='pets' ? <h2>Registra una mascota</h2> : null}
-                    {category=='password' ? <h2>Cambie su contraseña</h2> : null}
+                    {category ==='users' ? <h2>Regístrate</h2> : null}
+                    {category ==='pets' ? <h2>Registra una mascota</h2> : null}
+                    {category ==='password' ? <h2>Cambie su contraseña</h2> : null}
                     
                     <div className={style.datosform}>
                         
@@ -122,7 +122,7 @@ const RegistrationForm = ({category, profileData}) => {
                                 </div>
                                 <div className={style.dataEntry}>
                                     <Titulos texto='Decripción:' span='h6'></Titulos>
-                                    <input className={style.inputsBig} placeholder='Introduzca la información' {...register('description')}></input>
+                                    <input className={style.inputsBig} placeholder='Introduzca la información' {...register('description')} autoComplete='off'></input>
                                 </div>
                                 <div className={style.dataEntry}>
                                     <Titulos texto='Foto:' span='h6'></Titulos>
@@ -131,7 +131,7 @@ const RegistrationForm = ({category, profileData}) => {
                             </div>
                         : null}
 
-                        {category=='users' ?  
+                        {category ==='users' ?  
                             <div>
                                 <div className={style.dataEntry}>
                                      <Titulos texto='Nombre:' span='h6'></Titulos>
@@ -200,7 +200,7 @@ const RegistrationForm = ({category, profileData}) => {
                                 </div>
                                 <div className={style.dataEntry}>
                                     <Titulos texto='Descripción:' span='h6'></Titulos>
-                                    <input  className={style.inputs} placeholder='Introduzca la información' {...register('description')}></input>
+                                    <input  className={style.inputs} placeholder='Introduzca la información' {...register('description')} autoComplete='off'></input>
                                 </div>
                                 <div className={style.dataEntry}>
                                     <Titulos texto='Foto:' span='h6'></Titulos>
@@ -209,7 +209,7 @@ const RegistrationForm = ({category, profileData}) => {
                             </div>
                         : null}
 
-                        {category=='password' ?  
+                        {category ==='password' ?  
                         <div>
                                 <div className={style.dataEntry}>
                                     <Titulos texto='Email:' span='h6'></Titulos>

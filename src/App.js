@@ -40,7 +40,6 @@ function App() {
         <Footer></Footer>
       </BrowserRouter>
     </ChakraProvider>
-)
-}
+)}
 
 export default App;
