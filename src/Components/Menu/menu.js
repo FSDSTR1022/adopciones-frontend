@@ -6,6 +6,7 @@ import Button from '../Button/button'
 const Menu = () => {
     const [isLogged, setIsLogged] = useState(false)
     const navigate = useNavigate()
+    const userID = localStorage.getItem('userID')
 
     useEffect( () => {
         const token = localStorage.getItem('token')

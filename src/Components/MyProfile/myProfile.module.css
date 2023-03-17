@@ -1,0 +1,11 @@
+li:hover{    
+    color: #f23084;
+    text-decoration: underline;
+}
+li{
+    font-family: 'Jaldi';
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+

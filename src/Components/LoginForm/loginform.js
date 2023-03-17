@@ -22,6 +22,7 @@ async function handleRegistration (registroDatos) {
         .then(data => {
             console.log('respuesta', data)
             localStorage.setItem('token', data.Token)
+            localStorage.setItem('userID', data.userID)
            if (data.status === 'Success') {
             alert(data.message)
             navigate(`/pets`)

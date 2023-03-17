@@ -10,14 +10,13 @@ const Profile = ({profileData={}, category}) => {
     const {id} = useParams()
     const navigate = useNavigate()
     const [isLogged, setIsLogged] = useState(false)
+    const [userAllowed, setUserAllowed] = useState(false)
+    const [seeOptions, setSeeOptions] = useState(false)
     
-    useEffect( () => {
-        const token = localStorage.getItem('token')
-        if(token){
-            setIsLogged(true)
-        }
-    }, [])
-
+    // console.log('petUserID', profileData.userID)
+    // console.log('userUserID', profileData._id)
+    // console.log('opciones', seeOptions)
+    
     function getAge(dateString) { 
         const today = new Date(); 
         const birthDate = new Date(profileData.birthdate); 
@@ -47,6 +46,40 @@ const Profile = ({profileData={}, category}) => {
         })
         .catch((error) => console.log(error));
     }
+
+    useEffect( () => {
+        const token = localStorage.getItem('token')
+        if(token){
+            setIsLogged(true)
+        }
+    }, [])
+
+    {category === 'pets' ?
+    useEffect( () => {
+        const checkUser = localStorage.getItem('userID')
+        console.log('localstorage', checkUser)
+        console.log('userID', profileData.userID)
+        if(checkUser === profileData.userID){
+            setUserAllowed(true)
+        }
+    }, []) : 
+    useEffect( () => {
+        const checkUser = localStorage.getItem('userID')
+        if(checkUser === profileData._id){
+            setUserAllowed(true)
+        }
+    }, []) 
+    }    
+    useEffect( () => {
+        console.log('userallowed', userAllowed)
+        console.log('islogged', isLogged) 
+
+        if(userAllowed && isLogged){
+            setSeeOptions(true)
+        }
+    }, [])    
+
+
     return  <>  <div className={styles.profilePage}> 
                     <h2 >Todo sobre <a className={styles.itemName}>{profileData.name}</a></h2> 
                     <div >
@@ -56,6 +89,7 @@ const Profile = ({profileData={}, category}) => {
                             </div>
                             <div className={styles.bigInfo}>
                                 <h3 >General Information</h3>
+                                
                                 {category == 'users' ? <>
                                     <div className={styles.itemData}>
                                         <h4>Email: <a>{profileData.email}</a></h4>
@@ -66,7 +100,7 @@ const Profile = ({profileData={}, category}) => {
                                         <h4>Número de documento: <a>{profileData.idNumber}</a></h4>
                                         <h4>Descripción: <a>{profileData.description}</a></h4>                                        
                                     </div>
-                                        </>                                
+                                        </>
                                 : null}
                                 
                                 {category == 'pets' ? <>
@@ -87,17 +121,20 @@ const Profile = ({profileData={}, category}) => {
                                 <div className={styles.botonTotal}>
                                     <div className={styles.botonOpciones}>
                                         {/* {category == 'users' ? <Button texto='Cambiar Contraseña' ruta={`/${category}/passwordreset/${profileData._id}`} span='button4'></Button> : null} */}
-                                        {isLogged && <Button texto='Editar perfil' ruta={`/${category}/edit/${profileData._id}`} span='button4'></Button>} 
-                                        {isLogged && <button id="delete" onClick={deleteItem} ><a>Eliminar perfil</a></button>}                                        
+                                        {seeOptions && <Button texto='Editar perfil' ruta={`/${category}/edit/${profileData._id}`} span='button4'></Button>} 
+                                        {seeOptions && <button id="delete" onClick={deleteItem} ><a>Eliminar perfil</a></button>}                                        
                                         <Button texto='Atrás' ruta={`/${category}`} span='button4'></Button>
 
                                     </div>
-                                    {category == 'users' ? 
+                                    {category === 'users' ? 
                                         <div className={styles.botonCreate}>
-                                            {isLogged && <button> <a href={`/pets/newpet`} >Añadir mascota</a></button>}
-                                        </div> : 
-                                        <Button texto='Adopta' ruta={`/${category}/adoption/${profileData._id}`} span='button1'></Button>
-                                    }
+                                            {seeOptions && <button> <a href={`/pets/newpet`} >Añadir mascota</a></button> }
+                                        </div> : null }
+                                    {category === 'pets' ?
+                                        <div>
+                                        {seeOptions || <Button texto='Adopta' ruta={`/${category}/adoption/${profileData._id}`} span='button1'></Button> }
+                                        </div>
+                                    : null}
                                 </div>
 
                             </div>

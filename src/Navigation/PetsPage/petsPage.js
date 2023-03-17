@@ -9,7 +9,7 @@ const PetsPage = ({category}) => {
     const [filteredItems, setFilteredItems] = useState([]) 
     useEffect(() => {
         const getPet = async () => {
-            const rawData = await fetch(`http://localhost:8000/${category}?status=EN_ADOPCION`)
+            const rawData = await fetch(`http://localhost:8000/pets?status=EN_ADOPCION`)
             const pets = await rawData.json()
             setPet(pets.items)
             setFilteredItems(pets.items)

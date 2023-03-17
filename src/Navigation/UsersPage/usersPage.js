@@ -20,12 +20,18 @@ const UsersPage = () => {
 
     useEffect(() => {
         const getUsers = async () => {
-            const rawData = await fetch('http://localhost:8000/users')
+            const rawData = await fetch('http://localhost:8000/users', {
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${localStorage.getItem('token')}`
+                },
+            })
             const users = await rawData.json()
-            setUsers(users.users)
+            setUsers(users.items)
+            console.log('users', users.items)
         }
         getUsers()
-    }, [])
+    }, []) 
 
     return(<>
         <Parrilla allItems={allItems} category={'users'}></Parrilla>

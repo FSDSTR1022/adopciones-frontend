@@ -33,7 +33,7 @@ const Parrilla = ({allItems, category}) => {
                 : null}
             
             <div className={styles.parrilla}>
-            {items.map((item)=>(
+            {allItems.map((item)=>(
                 <div className={styles.fichaItem} key={item._id}>
                     <div className={styles.fichaContent}>
                         <img className={styles.picture} key={item.picture} src={item.picture} alt='' ></img>
