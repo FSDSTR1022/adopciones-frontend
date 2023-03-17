@@ -1,12 +1,14 @@
 import React from "react";
 import styles from "./bienvenida.module.css"
 import Button from "../Button/button";
+import petsPortada from '../../../src/Resources/petsPortada.jpeg'
+
 
 
 const Bienvenida = () => {
     return <div className={styles.wellcome}>
                 <div className={styles.contenedorFoto}>
-                    <img src='https://dogsbestlife.com/wp-content/uploads/2021/02/cats-vs.-dogs-group-scaled.jpeg' 
+                    <img src={petsPortada}
                     alt='' className={styles.foto}/>
                 </div>                
                 <div className={styles.disclosure}>

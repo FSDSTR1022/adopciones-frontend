@@ -3,7 +3,7 @@ import Menu from '../Menu/menu'
 import styles from "./header.module.css"
 import logoName from '../../../src/Resources/logoName.png'
 import logoCat from '../../../src/Resources/logoCat.png'
-
+ 
 
 function Header() {
   return (<>
